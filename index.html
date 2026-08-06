@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Console Repair Miami | PlayStation, Xbox &amp; Switch Repair — RepairStation</title>
+<title>Console Repair Miami | PlayStation, Xbox, Switch, Steam Deck &amp; ROG Ally — RepairStation</title>
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Console repair in Miami with free pickup and delivery. We collect your PlayStation 5, Xbox Series X/S, Nintendo Switch, Steam Deck or ROG Ally, repair it, and return it — usually within 24 hours. Free diagnostics, no fix no fee, 30-day warranty. Serving Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne &amp; Pinecrest.">
+<meta name="description" content="Console and handheld repair in Miami with free pickup and delivery. We collect your PlayStation 5, Xbox Series X/S, Nintendo Switch 2, Steam Deck or ASUS ROG Ally, repair it, and return it within 3 days. Free diagnostics, no fix no fee, 30-day warranty. Open daily 11am–11pm. Serving Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne &amp; Pinecrest.">
 <link rel="canonical" href="https://repairstationmiami.com/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
@@ -21,19 +21,18 @@
 <meta property="og:site_name" content="RepairStation">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://repairstationmiami.com/">
-<meta property="og:title" content="Console Repair Miami | Free Pickup &amp; Delivery — RepairStation">
-<meta property="og:description" content="We pick up your console, repair it, and bring it back — usually within 24 hours. Free diagnostics, no fix no fee, 30-day warranty. Serving Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne &amp; Pinecrest.">
-<!-- Upload the Facebook cover image to the repo root as og-image.png for this to resolve -->
-<meta property="og:image" content="https://repairstationmiami.com/og-image.png">
-<meta property="og:image:width" content="1640">
-<meta property="og:image:height" content="624">
+<meta property="og:title" content="Console &amp; Handheld Repair Miami | Free Pickup &amp; Delivery — RepairStation">
+<meta property="og:description" content="PlayStation, Xbox, Switch, Steam Deck &amp; ROG Ally — we pick it up, repair it, and bring it back within 3 days. Free diagnostics, no fix no fee, 30-day warranty. Serving Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne &amp; Pinecrest.">
+<meta property="og:image" content="https://repairstationmiami.com/rs-profile.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="RepairStation — console repair that comes to you, Miami">
 
 <!-- Twitter/X card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Console Repair Miami | Free Pickup &amp; Delivery — RepairStation">
-<meta name="twitter:description" content="We pick up your console, repair it, and bring it back — usually within 24 hours. Free diagnostics, no fix no fee, 30-day warranty.">
-<meta name="twitter:image" content="https://repairstationmiami.com/og-image.png">
+<meta name="twitter:title" content="Console &amp; Handheld Repair Miami | Free Pickup &amp; Delivery — RepairStation">
+<meta name="twitter:description" content="PlayStation, Xbox, Switch, Steam Deck &amp; ROG Ally — picked up, repaired, and returned within 3 days. Free diagnostics, no fix no fee, 30-day warranty.">
+<meta name="twitter:image" content="https://repairstationmiami.com/rs-profile.png">
 
 <!-- ============================================================
      RepairStation - single-file website
@@ -41,8 +40,9 @@
      1. Phone number      — done (Google Voice, (305) 699-2750)
      2. Email address     — done (contact@repairstationmiami.com)
      3. Booking form       — done (wired to Web3Forms)
-     4. About section text (search: TODO about) — still needs your name/story
+     4. About section text  — done (Pablo R. Casanova)
      5. Address validation — done (Geoapify key added)
+     6. Payments           — Stripe checkout still to be wired up (see TODO stripe)
      ============================================================ -->
 
 <!-- ============================================================
@@ -63,15 +63,20 @@
       "@id": "https://repairstationmiami.com/#business",
       "name": "RepairStation",
       "alternateName": "RepairStation Miami",
-      "description": "Mobile video game console repair service in Miami, Florida. We pick up your PlayStation, Xbox, Nintendo Switch, Steam Deck or ROG Ally from your door, repair it, and deliver it back — usually within 24 hours. Free diagnostics, no fix no fee, and a 30-day warranty on every repair.",
+      "description": "Mobile video game console and gaming handheld repair service in Miami, Florida. We pick up your PlayStation 5, Xbox Series X/S, Nintendo Switch 2, Steam Deck or ASUS ROG Ally from your door, repair it, and deliver it back within 3 days. Free diagnostics, no fix no fee, and a 30-day warranty on every repair.",
       "url": "https://repairstationmiami.com/",
       "telephone": "+1-305-699-2750",
       "email": "contact@repairstationmiami.com",
-      "priceRange": "$35–$120",
+      "priceRange": "$49–$249",
       "currenciesAccepted": "USD",
-      "paymentAccepted": "Cash, Zelle, Venmo, Credit Card, Debit Card",
-      "image": "https://repairstationmiami.com/og-image.png",
-      "logo": "https://repairstationmiami.com/og-image.png",
+      "paymentAccepted": "Cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, Credit Card, Debit Card",
+      "image": "https://repairstationmiami.com/rs-profile.png",
+      "logo": "https://repairstationmiami.com/rs-profile.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Pablo R. Casanova",
+        "jobTitle": "Founder & repair technician"
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Miami",
@@ -138,10 +143,11 @@
             "Wednesday",
             "Thursday",
             "Friday",
-            "Saturday"
+            "Saturday",
+            "Sunday"
           ],
-          "opens": "09:00",
-          "closes": "18:00"
+          "opens": "11:00",
+          "closes": "23:00"
         }
       ],
       "sameAs": [
@@ -171,7 +177,7 @@
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "60",
+              "price": "149",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
@@ -185,7 +191,7 @@
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "55",
+              "price": "129",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
@@ -199,35 +205,35 @@
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "40",
+              "price": "99",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
             "itemOffered": {
               "@type": "Service",
               "name": "Charging port repair",
-              "description": "Repair of loose or non-charging ports on handheld consoles and controllers."
+              "description": "USB-C and charging port replacement on Nintendo Switch, Steam Deck, ASUS ROG Ally, and controllers."
             }
           },
           {
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "45",
+              "price": "99",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
             "itemOffered": {
               "@type": "Service",
               "name": "Overheating and deep cleaning",
-              "description": "Full internal cleaning, dust removal, and thermal paste replacement for consoles running hot or loud."
+              "description": "Full internal cleaning, dust removal, fan service, and thermal compound replacement for consoles and handhelds running hot, loud, or throttling."
             }
           },
           {
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "35",
+              "price": "49",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
@@ -292,7 +298,7 @@
           "name": "How does console pickup and delivery work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "After you book, we'll text you to confirm a pickup window. We come to your door, collect your console, and give you a written estimate before any work starts. Once it's repaired, we deliver it back to you — usually within 24 hours."
+            "text": "After you book, we'll text you to confirm a pickup window. We come to your door, collect your console, and give you a written estimate before any work starts. Once it's repaired, we deliver it back to you — typically within 3 days of pickup."
           }
         },
         {
@@ -300,7 +306,7 @@
           "name": "How long will my console repair take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most common repairs are done within a single day. More involved fixes, or ones that need a specific part ordered, may take a little longer — we'll always give you a clear timeline at pickup."
+            "text": "Most repairs are back in your hands within 3 days of pickup. Jobs that need a specific part ordered can take longer — we'll always give you a clear timeline at pickup and keep you posted."
           }
         },
         {
@@ -324,7 +330,7 @@
           "name": "How do I pay for a console repair?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You pay on delivery, once your console is back and working. We accept cash, Zelle, Venmo, and most cards — whatever's easiest for you."
+            "text": "We accept cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, and credit or debit cards. Card payments are processed securely through Stripe. You can pre-pay online after you approve your estimate, or pay in person when we hand your console back. On some jobs we do ask for payment before delivery — if that applies to yours, we'll tell you upfront, never at the door."
           }
         },
         {
@@ -332,7 +338,7 @@
           "name": "Which consoles do you repair in Miami?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We focus on current-generation systems: PlayStation 5, Xbox Series X and Series S, Nintendo Switch 2, Nintendo Switch OLED, Steam Deck, and ASUS ROG Ally. Not sure if yours qualifies? Just ask in the booking form."
+            "text": "We focus on current-generation systems, and that includes gaming handhelds — not just the big three consoles. We repair PlayStation 5, Xbox Series X and Series S, Nintendo Switch 2, Nintendo Switch OLED, Steam Deck, and ASUS ROG Ally. Steam Deck and ROG Ally work is a core part of what we do, not an afterthought. Not sure if yours qualifies? Just ask in the booking form."
           }
         },
         {
@@ -762,6 +768,20 @@
   .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .svc-tag { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); background: var(--surface); padding: 3px 9px; border-radius: 6px; }
 
+  /* devices strip — sits under the pricing section heading */
+  .devices-row {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin: 18px auto 0; max-width: 680px;
+  }
+  .device-chip {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.2px;
+    color: var(--ink-soft); background: var(--white);
+    border: 1px solid var(--hairline-soft); border-radius: 999px;
+    padding: 6px 13px; transition: transform .3s cubic-bezier(.34,1.56,.64,1), border-color .3s ease;
+  }
+  .device-chip:hover { transform: translateY(-2px); border-color: var(--hairline); }
+
+
   @media (max-width: 880px) { .services { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
 
@@ -770,6 +790,7 @@
     border: 1px solid var(--hairline-soft); border-radius: var(--radius-sm);
     font-size: 14.5px; color: var(--ink-soft); display: flex; align-items: center; gap: 12px;
   }
+  .svc-note + .svc-note { margin-top: 12px; }
   .svc-note .badge {
     font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
     color: var(--ps-teal); background: #e4f6f2; padding: 4px 10px; border-radius: 6px; white-space: nowrap;
@@ -987,10 +1008,8 @@
   }
   .about-card .rainbow-rule { position: absolute; top: 0; left: 0; }
   .about-portrait {
-    width: 64px; height: 64px; border-radius: 16px; margin: 12px 0 22px;
-    background: var(--ink); color: var(--white);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--display); font-weight: 700; font-size: 26px;
+    width: 88px; height: 88px; border-radius: 18px; margin: 12px 0 22px;
+    background: var(--ink); display: block; object-fit: cover;
   }
   .about-card h3 { font-family: var(--display); font-weight: 600; font-size: 22px; margin-bottom: 4px; letter-spacing: -0.01em; }
   .about-role { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 20px; }
@@ -1221,7 +1240,7 @@
   <div class="wrap">
     <h1 class="reveal-text">Your console, fixed without leaving home.</h1>
     <div class="head-rule"></div>
-    <p class="hero-sub">Console repair across Miami with free pickup and delivery. We collect your PlayStation, Xbox, or Nintendo Switch, repair it, and bring it back — usually within 24 hours. No store visit. No hassle.</p>
+    <p class="hero-sub">Console and handheld repair across Miami with free pickup and delivery. PlayStation, Xbox, Nintendo Switch — and yes, Steam Deck and ASUS ROG Ally too. We collect it, repair it, and bring it back within 3 days. No store visit. No hassle.</p>
     <div class="hero-cta">
       <a href="#book" class="btn-primary"><span class="btn-label">Book a pickup</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1229,7 +1248,7 @@
       <a href="#pricing" class="btn-ghost">See pricing</a>
     </div>
     <div class="hero-trust">
-      <span class="pt"><span class="dot" style="background:var(--ps-teal)"></span>24-hour turnaround</span>
+      <span class="pt"><span class="dot" style="background:var(--ps-teal)"></span>3-day turnaround</span>
       <span class="pt"><span class="dot" style="background:var(--ps-blue)"></span>No fix, no fee</span>
       <span class="pt"><span class="dot" style="background:var(--ps-red)"></span>Free pickup &amp; delivery</span>
     </div>
@@ -1262,13 +1281,13 @@
         <span class="step-n">03</span>
         <div class="step-sym"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="width:100%;height:100%;"><polygon points="50,16 84,80 16,80" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>We repair</h3>
-        <p>Careful repair with quality parts. Most fixes are finished within a single day.</p>
+        <p>Careful repair with quality parts. Most jobs are finished and back with you within 3 days.</p>
       </div>
       <div class="step">
         <span class="step-n">04</span>
         <div class="step-sym"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="width:100%;height:100%;"><line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>We return</h3>
-        <p>Back in your hands, tested and working. You pay only once the repair is done.</p>
+        <p>Back in your hands, tested and working — typically within 3 days of pickup.</p>
       </div>
     </div>
   </div>
@@ -1281,58 +1300,66 @@
       <div class="kicker">Services &amp; pricing</div>
       <h2 class="reveal-text">Straightforward repairs, honest prices.</h2>
       <div class="head-rule"></div>
-      <p>Starting prices below. You'll get an exact quote at pickup before any work begins.</p>
+      <p>Starting prices below — pickup and delivery included, never billed on top. You'll get an exact quote at pickup before any work begins.</p>
+      <div class="devices-row">
+        <span class="device-chip">PlayStation 5</span>
+        <span class="device-chip">Xbox Series X/S</span>
+        <span class="device-chip">Nintendo Switch 2</span>
+        <span class="device-chip">Switch OLED</span>
+        <span class="device-chip">Steam Deck</span>
+        <span class="device-chip">ASUS ROG Ally</span>
+      </div>
     </div>
     <div class="services reveal">
 
       <div class="svc">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M17 7V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3"/></svg></div>
-          <div class="svc-price">$60<small>starting</small></div>
+          <div class="svc-price">$149<small>starting</small></div>
         </div>
         <h3>HDMI port repair</h3>
-        <p>No picture, "no signal," or a loose cable connection? We replace the damaged port.</p>
-        <div class="svc-tags"><span class="svc-tag">PS4</span><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
+        <p>No picture, "no signal," or a loose cable connection? Full micro-soldered port replacement under a microscope — not a reflow.</p>
+        <div class="svc-tags"><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
       </div>
 
       <div class="svc">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></svg></div>
-          <div class="svc-price">$55<small>starting</small></div>
+          <div class="svc-price">$129<small>starting</small></div>
         </div>
         <h3>Disc drive repair</h3>
-        <p>Won't read discs, won't eject, or grinding loudly? We service or replace the drive.</p>
-        <div class="svc-tags"><span class="svc-tag">PS4</span><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
+        <p>Won't read discs, won't eject, or grinding loudly? We service or replace the drive and re-pair it to your board.</p>
+        <div class="svc-tags"><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
       </div>
 
       <div class="svc">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
-          <div class="svc-price">$40<small>starting</small></div>
+          <div class="svc-price">$99<small>starting</small></div>
         </div>
         <h3>Charging port repair</h3>
-        <p>Controllers or a Switch that won't charge or only works at the right angle.</p>
-        <div class="svc-tags"><span class="svc-tag">Switch</span><span class="svc-tag">Controllers</span></div>
+        <p>A Switch, Steam Deck, ROG Ally or controller that won't charge, or only charges at the right angle. USB-C port replaced properly.</p>
+        <div class="svc-tags"><span class="svc-tag">Switch</span><span class="svc-tag">Steam Deck</span><span class="svc-tag">ROG Ally</span><span class="svc-tag">Controllers</span></div>
       </div>
 
       <div class="svc">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6m0 0a4 4 0 1 0 4 4M12 9a4 4 0 0 1 4 4"/><path d="M12 3a2 2 0 0 1 2 2v8"/></svg></div>
-          <div class="svc-price">$45<small>starting</small></div>
+          <div class="svc-price">$99<small>starting</small></div>
         </div>
         <h3>Overheating &amp; cleaning</h3>
-        <p>Loud fans, shutdowns, or dust buildup. Deep clean, fresh thermal paste, fan service.</p>
-        <div class="svc-tags"><span class="svc-tag">PS4</span><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
+        <p>Loud fans, shutdowns, thermal throttling, or dust buildup. Deep clean, fresh thermal compound, full fan service.</p>
+        <div class="svc-tags"><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span><span class="svc-tag">Steam Deck</span><span class="svc-tag">ROG Ally</span></div>
       </div>
 
       <div class="svc">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-          <div class="svc-price">$35<small>starting</small></div>
+          <div class="svc-price">$49<small>starting</small></div>
         </div>
         <h3>Stick drift repair</h3>
-        <p>Character moving on its own? We fix or replace drifting analog sticks.</p>
-        <div class="svc-tags"><span class="svc-tag">DualSense</span><span class="svc-tag">Xbox</span><span class="svc-tag">Joy-Con</span></div>
+        <p>Character moving on its own? We replace the drifting stick module — Hall effect upgrades available on request.</p>
+        <div class="svc-tags"><span class="svc-tag">DualSense</span><span class="svc-tag">Xbox</span><span class="svc-tag">Joy-Con</span><span class="svc-tag">Steam Deck</span></div>
       </div>
 
       <div class="svc">
@@ -1341,8 +1368,8 @@
           <div class="svc-price">Free<small>estimate</small></div>
         </div>
         <h3>Won't power on &amp; more</h3>
-        <p>Dead console, water damage, or something unusual? We'll diagnose it at no cost.</p>
-        <div class="svc-tags"><span class="svc-tag">All consoles</span></div>
+        <p>Dead console, liquid damage, board-level faults, or something unusual? We'll diagnose it at no cost and quote before we touch it.</p>
+        <div class="svc-tags"><span class="svc-tag">All consoles</span><span class="svc-tag">All handhelds</span></div>
       </div>
 
     </div>
@@ -1350,6 +1377,19 @@
     <div class="svc-note reveal">
       <span class="badge">30-DAY WARRANTY</span>
       <span>Every repair is backed by a 30-day warranty on parts and labor. If we can't fix it, you don't pay a cent.</span>
+    </div>
+
+    <div class="svc-note reveal">
+      <span class="badge">FREE PICKUP</span>
+      <span>Doorstep pickup and delivery are built into every price you see above — there is no travel fee, trip charge, or delivery surcharge added at the end.</span>
+    </div>
+
+    <!-- TODO: stripe — swap this copy for a live Stripe Checkout / Payment Link
+         once the account is set up. Keep the wording here in sync with the
+         payment FAQ and the JSON-LD paymentAccepted field. -->
+    <div class="svc-note reveal">
+      <span class="badge">EASY PAYMENT</span>
+      <span>Cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay and cards — processed securely through Stripe. Pre-pay online or settle up in person when we hand your console back.</span>
     </div>
   </div>
 </section>
@@ -1423,16 +1463,16 @@
     <div class="about-grid">
       <div class="about-card reveal">
         <div class="rainbow-rule"></div>
-        <!-- TODO: about — replace initials, name, and the story below with your own -->
-        <div class="about-portrait">RS</div>
-        <h3>Your name</h3>
+        <img class="about-portrait" src="rs-profile.png" width="88" height="88"
+             alt="RepairStation logo — pixel-art RS wordmark over a rainbow bar">
+        <h3>Pablo R. Casanova</h3>
         <div class="about-role">Founder &amp; repair tech</div>
 
         <div class="about-status">
           <span class="status-pill" id="aboutStatusPill">
             <span class="status-dot"></span><span class="status-label">Open now</span>
           </span>
-          <div class="status-hours" id="aboutStatusHours">Closes 6pm today · Mon–Sat 9–6</div>
+          <div class="status-hours" id="aboutStatusHours">Open daily 11am–11pm</div>
         </div>
 
         <div class="contact-grid">
@@ -1441,26 +1481,26 @@
               <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>
               <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/>
             </svg>
-            <span>@repairstationmiami</span>
+            <span>Instagram</span>
           </a>
           <a class="contact-tile ct-facebook" href="https://www.facebook.com/profile.php?id=61588775792881" target="_blank" rel="noopener">
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
             </svg>
-            <span>RepairStation Miami</span>
+            <span>Facebook</span>
           </a>
           <a class="contact-tile ct-youtube" href="https://www.youtube.com/@repairstation" target="_blank" rel="noopener">
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.6.4 8.5.4 8.5.4s6.9 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1z"/>
               <polygon points="9.9 15.3 15.5 12 9.9 8.7 9.9 15.3" fill="currentColor" stroke="none"/>
             </svg>
-            <span>@repairstation</span>
+            <span>YouTube</span>
           </a>
           <a class="contact-tile ct-email" href="mailto:contact@repairstationmiami.com">
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>
             </svg>
-            <span>contact@repairstationmiami.com</span>
+            <span>Email</span>
           </a>
         </div>
 
@@ -1473,8 +1513,9 @@
       </div>
       <div class="about-copy reveal">
         <p>Most repair places make a broken console your problem to solve — find the shop, get there during business hours, wait days, drive back. RepairStation flips that around.</p>
-        <p>You book online, I collect your console from your door, fix it properly, and return it tested and working. You only pay when it's back in your hands and you're happy with it.</p>
-        <p>Clear pricing, careful work, and a 30-day warranty on everything. That's the whole idea.</p>
+        <p>I'm Pablo, and I repair consoles for a living. You book online, I collect your system from your door, fix it properly on the bench, and return it tested and working — usually within 3 days.</p>
+        <p>That means PlayStation 5, Xbox Series X and S, and Nintendo Switch 2 — but also Steam Deck and ASUS ROG Ally, which most shops in Miami still won't touch. Handhelds are board-level work, and they're a core part of what I do.</p>
+        <p>Clear pricing with pickup and delivery included, careful work, and a 30-day warranty on everything. That's the whole idea.</p>
       </div>
     </div>
   </div>
@@ -1491,11 +1532,11 @@
     <div class="faq reveal">
       <div class="faq-item">
         <button class="faq-q">How does console pickup and delivery work? <span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><p>After you book, we'll text you to confirm a pickup window. We come to your door, collect your console, and give you a written estimate before any work starts. Once it's repaired, we deliver it back to you — usually within 24 hours.</p></div>
+        <div class="faq-a"><p>After you book, we'll text you to confirm a pickup window. We come to your door, collect your console, and give you a written estimate before any work starts. Once it's repaired, we deliver it back to you — typically within 3 days of pickup.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">How long will my console repair take? <span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><p>Most common repairs are done within a single day. More involved fixes, or ones that need a specific part ordered, may take a little longer — we'll always give you a clear timeline at pickup.</p></div>
+        <div class="faq-a"><p>Most repairs are back in your hands within 3 days of pickup. Jobs that need a specific part ordered can take longer — we'll always give you a clear timeline at pickup and keep you posted along the way.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">What if you can't fix my console? <span class="faq-icon" aria-hidden="true"></span></button>
@@ -1507,11 +1548,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">How do I pay for a console repair? <span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><p>You pay on delivery, once your console is back and working. We accept cash, Zelle, Venmo, and most cards — whatever's easiest for you.</p></div>
+        <div class="faq-a"><p>We take cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, and credit or debit cards. Card and wallet payments are processed securely through Stripe.</p><p>Once you've approved your estimate you can pre-pay online, or pay in person when we hand your console back. On some jobs we ask for payment to be settled before delivery — that depends on the type of repair, the parts involved, and the pickup location. If it applies to your booking, we'll tell you when we confirm your pickup window.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Which consoles do you repair in Miami? <span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><p>We focus on current-generation systems: PlayStation 5, Xbox Series X and Series S, Nintendo Switch 2, Nintendo Switch OLED, Steam Deck, and ASUS ROG Ally. Not sure if yours qualifies? Just ask in the booking form.</p></div>
+        <div class="faq-a"><p>We focus on current-generation systems: PlayStation 5, Xbox Series X and Series S, Nintendo Switch 2, and Nintendo Switch OLED.</p><p>We also repair gaming handhelds — Steam Deck and ASUS ROG Ally — which plenty of shops still turn away. That's board-level work and it's a core part of what we do, not a side service. Not sure if yours qualifies? Just ask in the booking form.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Do you offer console repair near me in Miami? <span class="faq-icon" aria-hidden="true"></span></button>
@@ -1651,7 +1692,7 @@
           <span class="btn-label">Request pickup</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
-        <p class="form-foot">No payment now. We'll confirm your pickup window by text within a few hours.</p>
+        <p class="form-foot">No payment now — you'll get a written estimate before any work starts. We'll get in touch within 12 hours to confirm your pickup window.</p>
         <div class="form-msg" id="formMsg"></div>
       </form>
     </div>
@@ -1668,7 +1709,7 @@
         <a href="#top" class="brand" aria-label="RepairStation home">
           <span class="brand-name">RepairStation</span>
         </a>
-        <p>Console repair that comes to you. PlayStation, Xbox &amp; Nintendo Switch — picked up, fixed, and returned across Miami.</p>
+        <p>Console and handheld repair that comes to you. PlayStation, Xbox, Nintendo Switch, Steam Deck &amp; ROG Ally — picked up, fixed, and returned across Miami.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -1683,6 +1724,7 @@
           <a href="tel:+13056992750">(305) 699-2750</a>
           <a href="mailto:contact@repairstationmiami.com">contact@repairstationmiami.com</a>
           <a href="#book">Book a pickup</a>
+          <span>Open daily 11am–11pm</span>
         </div>
         <div class="footer-col">
           <h4>Areas</h4>
@@ -1769,14 +1811,15 @@
   // another timezone will see a status computed on their own clock rather
   // than Miami's — a known tradeoff of doing this client-side, acceptable
   // for a mostly-local audience.
-  // TODO: hours — update OPEN_HOUR/CLOSE_HOUR/OPEN_DAYS if these change.
+  // TODO: hours — update OPEN_HOUR/CLOSE_HOUR/OPEN_DAYS/HOURS_LABEL if these change.
   (function () {
     var pill  = document.getElementById('aboutStatusPill');
     var hours = document.getElementById('aboutStatusHours');
     if (!pill || !hours) return;
 
-    var OPEN_HOUR = 9, CLOSE_HOUR = 18;         // 9am–6pm
-    var OPEN_DAYS = [1, 2, 3, 4, 5, 6];          // Mon–Sat; Sunday (0) closed
+    var OPEN_HOUR = 11, CLOSE_HOUR = 23;        // 11am–11pm
+    var OPEN_DAYS = [0, 1, 2, 3, 4, 5, 6];       // open every day
+    var HOURS_LABEL = 'Open daily 11am–11pm';
     var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var label = pill.querySelector('.status-label');
 
@@ -1804,11 +1847,11 @@
       label.textContent = isOpen ? 'Open now' : 'Closed now';
 
       if (isOpen) {
-        hours.textContent = 'Closes ' + fmtHour(CLOSE_HOUR) + ' today · Mon–Sat 9–6';
+        hours.textContent = 'Closes ' + fmtHour(CLOSE_HOUR) + ' today · ' + HOURS_LABEL;
       } else if (opensToday && hour < OPEN_HOUR) {
-        hours.textContent = 'Opens ' + fmtHour(OPEN_HOUR) + ' today · Mon–Sat 9–6';
+        hours.textContent = 'Opens ' + fmtHour(OPEN_HOUR) + ' today · ' + HOURS_LABEL;
       } else {
-        hours.textContent = 'Opens ' + fmtHour(OPEN_HOUR) + ' ' + nextOpenDayLabel(day) + ' · Mon–Sat 9–6';
+        hours.textContent = 'Opens ' + fmtHour(OPEN_HOUR) + ' ' + nextOpenDayLabel(day) + ' · ' + HOURS_LABEL;
       }
     }
     update();
@@ -2267,8 +2310,12 @@
       });
       if (!res.ok) throw new Error('bad response');
       form.reset();
+      // Hand off to the confirmation page, which explains what happens next.
+      // Brief inline message first so there's no blank beat if the nav is slow.
       msg.className = 'form-msg ok';
-      msg.textContent = "Got it! We'll text you within a few hours to confirm your pickup. Thanks for choosing RepairStation.";
+      msg.textContent = "Got it — taking you to your confirmation…";
+      window.location.assign('confirmed.html');
+      return;
     } catch (err) {
       msg.className = 'form-msg err';
       msg.innerHTML = "Something went wrong sending that. Please call or text us at (305) 699-2750 and we'll sort it out.";

@@ -1,56 +1,75 @@
 # RepairStation
 
-> Mobile video game console repair service in Miami, Florida. We pick up your
-> console from your door, repair it, and deliver it back — usually within 24
-> hours. No store visit required.
+> Mobile video game console and gaming handheld repair service in Miami, Florida.
+> We pick up your console from your door, repair it, and deliver it back — typically
+> within 3 days. No store visit required.
 
 ## Business facts
 
 - **Name:** RepairStation
+- **Founder & technician:** Pablo R. Casanova
 - **Location:** Miami, Florida, United States
 - **Website:** https://repairstationmiami.com/
 - **Phone:** (305) 699-2750
 - **Email:** contact@repairstationmiami.com
-- **Hours:** Monday–Saturday, 9:00am–6:00pm ET. Closed Sunday.
+- **Hours:** Every day, 11:00am–11:00pm ET.
 - **Service model:** Mobile / pickup and delivery. There is no walk-in storefront.
-- **Payment accepted:** Cash, Zelle, Venmo, credit and debit cards. Payment is taken on delivery, after the repair is complete.
+- **Payment accepted:** Cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, credit and
+  debit cards. Card and digital wallet payments are processed through Stripe.
 
 ## Service area
 
 Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne, and Pinecrest.
 Also serves the wider Miami-Dade County area on request.
 
-## Consoles repaired
+## Consoles and handhelds repaired
 
 Current-generation systems only:
 PlayStation 5, Xbox Series X, Xbox Series S, Nintendo Switch 2,
 Nintendo Switch OLED, Steam Deck, ASUS ROG Ally.
 
+Gaming handhelds (Steam Deck and ASUS ROG Ally) are a core service, not an
+afterthought — this is board-level work that many general repair shops decline.
+
 ## Services and starting prices (USD)
 
-- HDMI port repair — from $60
-- Disc drive repair — from $55
-- Charging port repair — from $40
-- Overheating and deep cleaning (includes thermal paste replacement) — from $45
-- Controller stick drift repair — from $35
+Pickup and delivery are included in every price listed. There is no travel fee,
+trip charge, or delivery surcharge.
+
+- HDMI port repair — from $149
+- Disc drive repair — from $129
+- Charging port repair (USB-C on Switch, Steam Deck, ROG Ally, controllers) — from $99
+- Overheating, fan service and deep cleaning (includes thermal compound replacement) — from $99
+- Controller stick drift repair — from $49
 - Diagnostics for consoles that won't power on — free
 - Pickup and delivery — free
 
+Board-level and liquid damage work is quoted after a free diagnostic.
+
 ## Guarantees
 
-- Free diagnostics on every console.
+- Free diagnostics on every console and handheld.
 - No fix, no fee: if the repair isn't possible or doesn't hold, there is no charge.
 - Written estimate provided before any work begins.
 - 30-day warranty on every completed repair.
-- Customer data and saved games are left untouched for the vast majority of repairs; any risk to data is disclosed upfront.
+- Customer data and saved games are left untouched for the vast majority of repairs;
+  any risk to data is disclosed upfront.
 
 ## How it works
 
 1. Customer books a pickup through the website form at https://repairstationmiami.com/#book
 2. RepairStation texts to confirm a pickup window.
 3. The console is collected from the customer's door and a written estimate is given.
-4. The repair is completed, typically same-day.
-5. The console is delivered back, usually within 24 hours. Payment is taken then.
+4. The repair is completed on the bench.
+5. The console is delivered back, typically within 3 days of pickup.
+
+## Payment timing
+
+After approving the written estimate, customers may either pre-pay online or pay in
+person when the console is returned. On some bookings RepairStation requires payment
+to be settled before delivery; this depends on factors such as the type of repair,
+the parts involved, and the pickup location. Where it applies, the customer is told
+when their pickup window is confirmed.
 
 ## Social profiles
 
