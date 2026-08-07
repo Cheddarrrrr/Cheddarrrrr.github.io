@@ -390,7 +390,7 @@
     --mono: 'Space Mono', ui-monospace, monospace;
 
     --maxw: 1080px;
-    --nav-h: 56px;
+    --nav-h: 60px;
     --radius: 16px;
     --radius-sm: 12px;
 
@@ -506,13 +506,26 @@
      except the favicon (a separate, self-contained data-URI — untouched by
      this). The rainbow underline is the brand mark now. */
   .brand-name {
-    position: relative; display: inline-block; padding-bottom: 1px; line-height: 1;
+    position: relative; display: inline-block; padding-bottom: 0; line-height: 1;
     font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: -0.3px;
   }
+  /* The rule hangs BELOW the inline-block rather than sitting at its edge.
+     With line-height:1 the descender of the "p" overflows the box bottom, so a
+     rule at bottom:0 cuts straight through it. Negative bottom clears the
+     descender and — because it adds no height — leaves the wordmark's vertical
+     centring in the flex nav untouched.
+     All three values are em-based so the nav (20px) and footer (17px) marks
+     stay proportional. To nudge the gap, change `bottom` only: less negative
+     moves the rule up toward the letter, more negative moves it away. */
   .brand-name::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2.5px; border-radius: 2px;
+    content: ""; position: absolute; left: 0; right: 0;
+    bottom: -0.26em; height: 0.14em; border-radius: 2px;
     background-image: linear-gradient(to right, #61bb46, #fdb827, #f5821f, #e03a3e, #963d97, #009ddc);
   }
+  /* Nav wordmark is sized against the CTA pill and menu icon sitting opposite
+     it, so it's scoped here rather than on .brand-name globally — the footer
+     wordmark sits above body copy and keeps the smaller base size. */
+  .nav .brand-name { font-size: 20px; letter-spacing: -0.4px; }
 
   /* Menu button + "Book a pickup" live together on the right, outside the
      collapsible link panel — the CTA stays visible at every breakpoint.
@@ -524,8 +537,8 @@
   .nav-book {
     font-family: var(--body);
     background: var(--ink); color: var(--white);
-    border: none; border-radius: 980px; padding: 8px 18px;
-    font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none;
+    border: none; border-radius: 980px; padding: 9px 19px;
+    font-size: 14.5px; font-weight: 500; line-height: 1.25; cursor: pointer; text-decoration: none;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     opacity: 0; animation: navBookIn 0.6s ease 0.15s forwards;
   }
@@ -547,9 +560,10 @@
   .nav-toggle {
     display: flex; align-items: center; justify-content: center;
     background: none; border: none; cursor: pointer; border-radius: 8px;
-    width: 40px; height: 40px; padding: 8px; color: var(--ink);
+    width: 36px; height: 36px; padding: 0; color: var(--ink);
     transition: background 0.15s;
   }
+  .nav-toggle svg { width: 21px; height: 21px; display: block; }
   .nav-toggle:hover { background: var(--surface); }
 
   /* Collapsible link panel — anchored to the toggle button itself (nav-right
@@ -1513,7 +1527,7 @@
       </div>
       <div class="about-copy reveal">
         <p>Most repair places make a broken console your problem to solve — find the shop, get there during business hours, wait days, drive back. RepairStation flips that around.</p>
-        <p>I'm Pablo, and I repair consoles for a living. You book online, I collect your system from your door, take it to our workshop to get it fixed, and return it tested and working — usually within 3 days.</p>
+        <p>I'm Pablo, and I repair consoles for a living. You book online, I collect your system from your door, take it to our workshep to get it fixed, and return it tested and working — usually within 3 days.</p>
         <p>That means PlayStation 5, Xbox Series X and S, and Nintendo Switch 2 — but also Steam Deck and ASUS ROG Ally, which most shops in Miami still won't touch.</p>
         <p>Clear pricing with pickup and delivery included, careful work, and a 30-day warranty on everything. That's the whole idea.</p>
       </div>
