@@ -71,6 +71,18 @@ to be settled before delivery; this depends on factors such as the type of repai
 the parts involved, and the pickup location. Where it applies, the customer is told
 when their pickup window is confirmed.
 
+## Policies
+
+- Terms of Service: https://repairstationmiami.com/terms.html
+- Privacy Policy: https://repairstationmiami.com/privacy.html
+- Cancel free any time before approving the written estimate.
+- No fix, no fee: labour is never charged if the repair can't be completed or
+  doesn't hold. Special-order parts already installed are non-refundable, and
+  are always disclosed in the estimate before the customer approves it.
+- 30-day warranty on completed repairs; the first remedy is always a re-repair.
+- No customer data is sold or shared with advertisers. The site sets no cookies
+  and runs no analytics.
+
 ## Social profiles
 
 - Instagram: https://www.instagram.com/repairstationmiami/

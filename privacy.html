@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — RepairStation</title>
+<meta name="description" content="Privacy Policy for RepairStation, a mobile video game console and handheld repair service in Miami, Florida. What we collect, who processes it, and your choices.">
+<link rel="canonical" href="https://repairstationmiami.com/privacy.html">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ─────────────────────────────────────────────────────────────
+     HEADS UP — before this goes live:
+       1. Confirm "RepairStation LLC" matches the Sunbiz registration and
+          the Stripe account name.
+       2. The third-party list in section 4 is drawn from what the site
+          actually loads today (Web3Forms, Geoapify, Stripe, GitHub Pages,
+          Google Fonts, CARTO/OpenStreetMap, unpkg). If you add analytics,
+          a booking database, a chat widget, or an ads pixel, this section
+          MUST be updated — an inaccurate processor list is worse than none.
+       3. Have a Florida attorney read it. Good draft, not legal advice.
+     ───────────────────────────────────────────────────────────── -->
+
+<style>
+  :root {
+    --white:#fff; --surface:#f5f5f7; --surface-2:#fafafa;
+    --ink:#1d1d1f; --ink-soft:#424245; --muted:#6e6e73;
+    --hairline:#d2d2d7; --hairline-soft:#e8e8ed;
+    --ps-red:#e0383e; --ps-blue:#1b6ce6; --ps-teal:#12a890; --ps-pink:#d4419e;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'Space Mono',ui-monospace,monospace;
+    --maxw:760px; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .rainbow-rule{height:4px;width:100%;border:none;border-radius:4px;
+    background:linear-gradient(to right,#61bb46,#fdb827,#f5821f,#e03a3e,#963d97,#009ddc)}
+
+  .topbar{border-bottom:1px solid var(--hairline-soft);padding:18px 0;position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(18px);z-index:10}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand-name{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.4px;color:var(--ink);text-decoration:none}
+  .back{font-size:14px;color:var(--muted);text-decoration:none}
+  .back:hover{color:var(--ink)}
+
+  header.doc{padding:56px 0 34px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,5vw,42px);line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
+  header.doc .rainbow-rule{max-width:120px;margin-bottom:22px}
+  .updated{font-size:14px;color:var(--muted)}
+  .lede{font-size:16.5px;color:var(--ink-soft);margin-top:18px}
+
+  main.doc{padding-bottom:64px}
+  h2{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em;margin:38px 0 12px;scroll-margin-top:80px}
+  h3{font-family:var(--body);font-weight:600;font-size:16px;margin:22px 0 8px}
+  p{margin-bottom:14px;color:var(--ink-soft)}
+  ul,ol{margin:0 0 16px 22px;color:var(--ink-soft)}
+  li{margin-bottom:8px}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--ps-blue)}
+
+  .toc{background:var(--surface-2);border:1px solid var(--hairline-soft);border-radius:var(--radius);padding:22px 26px;margin:28px 0 8px}
+  .toc h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:400}
+  .toc ol{margin:0 0 0 18px;columns:2;column-gap:28px}
+  .toc li{margin-bottom:6px;font-size:14px}
+  .toc a{color:var(--ink-soft);text-decoration:none}
+  .toc a:hover{color:var(--ps-blue);text-decoration:underline}
+  @media (max-width:560px){.toc ol{columns:1}}
+
+  .callout{border-left:3px solid var(--ps-teal);background:var(--surface-2);
+    border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .callout p:last-child{margin-bottom:0}
+  .callout.warn{border-left-color:var(--ps-red)}
+
+  dl.facts{border:1px solid var(--hairline);border-radius:var(--radius);overflow:hidden;margin:18px 0}
+  dl.facts div{display:flex;gap:16px;padding:12px 18px;border-bottom:1px solid var(--hairline-soft)}
+  dl.facts div:last-child{border-bottom:none}
+  dl.facts dt{font-size:13px;color:var(--muted);flex:none;width:150px}
+  dl.facts dd{font-size:14.5px;color:var(--ink);font-weight:500}
+  @media (max-width:520px){dl.facts div{flex-direction:column;gap:2px}dl.facts dt{width:auto}}
+
+  .tbl-scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--hairline);border-radius:var(--radius)}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--hairline-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);font-weight:400;background:var(--surface-2)}
+  tr:last-child td{border-bottom:none}
+  td{color:var(--ink-soft)}
+  td:first-child{color:var(--ink);font-weight:500;white-space:nowrap}
+
+  footer.doc{border-top:1px solid var(--hairline-soft);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+  footer.doc .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+  footer.doc a{color:var(--ink-soft);text-decoration:none}
+  footer.doc a:hover{color:var(--ink)}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="brand-name">RepairStation</a>
+    <a href="index.html" class="back">← Back to site</a>
+  </div>
+</div>
+
+<header class="doc">
+  <div class="wrap">
+    <div class="kicker">Legal</div>
+    <h1>Privacy Policy</h1>
+    <div class="rainbow-rule"></div>
+    <p class="updated">Effective August 12, 2026 · Last updated August 12, 2026</p>
+    <p class="lede">We're a small repair shop, not an advertising business. We collect what we need to pick up your console, fix it, and bring it back — and nothing else. We have never sold customer data and we don't intend to start.</p>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+
+    <div class="toc">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#short">The short version</a></li>
+        <li><a href="#collect">What we collect</a></li>
+        <li><a href="#why">Why we collect it</a></li>
+        <li><a href="#share">Who else processes it</a></li>
+        <li><a href="#payments">Payments &amp; card data</a></li>
+        <li><a href="#device">Data on your console</a></li>
+        <li><a href="#sms">Calls, texts &amp; email</a></li>
+        <li><a href="#cookies">Cookies &amp; analytics</a></li>
+        <li><a href="#retention">How long we keep it</a></li>
+        <li><a href="#rights">Your choices &amp; rights</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </div>
+
+    <h2 id="short">1. The short version</h2>
+    <div class="callout">
+      <p><strong>We collect:</strong> your name, phone number, optional email, the neighborhood or address we're collecting from, and what's wrong with your console.</p>
+      <p><strong>We use it for:</strong> arranging your pickup, sending your estimate, doing the repair, taking payment, and honouring your warranty.</p>
+      <p><strong>We never:</strong> sell your data, rent it, share it with advertisers, or send you marketing you didn't ask for.</p>
+      <p><strong>We never see your full card number</strong> — Stripe handles that end to end.</p>
+    </div>
+    <p>This policy applies to <a href="https://repairstationmiami.com/">repairstationmiami.com</a> and to the repair service itself. RepairStation LLC ("we", "us") is the business responsible for the information described here.</p>
+
+    <h2 id="collect">2. What we collect</h2>
+    <h3>Information you give us when you book</h3>
+    <ul>
+      <li><strong>Name</strong> — first and last, so we know who we're meeting.</li>
+      <li><strong>Phone number</strong> — required, because confirming a pickup window by text is the whole workflow.</li>
+      <li><strong>Email address</strong> — optional, unless you pick email as your preferred contact method.</li>
+      <li><strong>Neighborhood, and street address where relevant</strong> — we only ask for a full street address when your pickup is outside the six neighborhoods we list. For those six, the neighborhood is enough to schedule, and we get the exact address when we confirm by text.</li>
+      <li><strong>Device and fault details</strong> — which console, what's going wrong, and anything you write in the description box.</li>
+      <li><strong>Preferred date and pickup window</strong>, and your preferred contact method.</li>
+    </ul>
+    <h3>Information that comes from the repair itself</h3>
+    <ul>
+      <li>Device model and serial number, the fault we diagnosed, parts used, and the work performed. We keep this because it's what a warranty claim is checked against.</li>
+      <li>Photos of the device where they're useful for documenting existing damage or explaining a repair to you.</li>
+    </ul>
+    <h3>Information collected automatically</h3>
+    <p>Our website is a set of static files with <strong>no analytics, no tracking pixels, no advertising tags and no first-party cookies</strong>. The hosting provider and the third parties listed in section 4 receive your IP address and browser user-agent as an unavoidable part of serving the page — that's ordinary web-server logging, not profiling by us.</p>
+
+    <h2 id="why">3. Why we collect it</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>What</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Name, phone, email</td><td>To confirm your pickup window, send your written estimate, and tell you when your console is ready</td></tr>
+          <tr><td>Address / neighborhood</td><td>To get to you for collection and delivery, and to check you're inside our service area</td></tr>
+          <tr><td>Device &amp; fault details</td><td>To diagnose and quote the repair before we collect</td></tr>
+          <tr><td>Repair record &amp; serial number</td><td>To honour the 30-day warranty and know what we did if the fault returns</td></tr>
+          <tr><td>Payment record</td><td>To take payment, issue refunds, and meet tax and accounting obligations</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>We don't use your information to build a profile, score you, or make automated decisions about you.</p>
+
+    <h2 id="share">4. Who else processes it</h2>
+    <p>We use a small number of third-party services to run the site and the business. Each one only receives what it needs. We don't share your information with anyone else, and we don't sell it.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Service</th><th>What it handles</th><th>What it receives</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Stripe</td>
+            <td>Card &amp; digital wallet payments</td>
+            <td>Your card details (directly — not via us), name, amount, and email if you provide one for a receipt</td>
+          </tr>
+          <tr>
+            <td>Web3Forms</td>
+            <td>Delivers the booking form to our inbox</td>
+            <td>Everything you type into the booking form</td>
+          </tr>
+          <tr>
+            <td>Geoapify</td>
+            <td>Address autocomplete and address verification</td>
+            <td>The partial address you type, when the address field is shown</td>
+          </tr>
+          <tr>
+            <td>GitHub Pages</td>
+            <td>Website hosting</td>
+            <td>Your IP address and browser user-agent, in standard server logs</td>
+          </tr>
+          <tr>
+            <td>Google Fonts</td>
+            <td>The typefaces the site uses</td>
+            <td>Your IP address and browser user-agent when fonts load</td>
+          </tr>
+          <tr>
+            <td>CARTO &amp; OpenStreetMap</td>
+            <td>The service-area map</td>
+            <td>Your IP address when map tiles load</td>
+          </tr>
+          <tr>
+            <td>unpkg</td>
+            <td>Serves the map library</td>
+            <td>Your IP address when the script loads</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Each of these processes data under its own privacy policy. We may also disclose information if we're legally required to — a subpoena, court order, or law enforcement request we're obliged to honour — or where it's necessary to establish or defend a legal claim.</p>
+
+    <h2 id="payments">5. Payments &amp; card data</h2>
+    <div class="callout">
+      <p><strong>We never see, handle, or store your full card number, expiry date, or security code.</strong> When you pay by card or digital wallet, those details go directly from you to Stripe over an encrypted connection.</p>
+    </div>
+    <p>Stripe is a PCI-DSS Level 1 certified payment processor. What comes back to us is limited: the last four digits, the card brand, whether the payment succeeded, and the amount. That's what we use to match payments to repairs and to issue refunds.</p>
+    <p>Stripe processes your payment information under its own privacy policy, available at <a href="https://stripe.com/privacy" target="_blank" rel="noopener">stripe.com/privacy</a>. If you pay by cash, Zelle, Cash App, Venmo, Apple Pay or Google Pay, that transaction is governed by the terms of whichever service you use.</p>
+
+    <h2 id="device">6. Data on your console</h2>
+    <p>Your console holds your saved games, accounts, screenshots and downloads. We treat that as yours and none of our business.</p>
+    <ul>
+      <li>We don't browse your files, accounts, messages, or media.</li>
+      <li>We don't copy anything off your device.</li>
+      <li>We only interact with the system as far as diagnosing and fixing the reported fault requires — which usually means powering it on, testing the specific fault, and testing it again afterwards.</li>
+      <li>For most repairs your storage is never touched. Where a repair carries a real risk to your data — storage, board-level, and liquid damage work especially — <strong>we tell you in the written estimate before you approve it</strong>.</li>
+    </ul>
+    <p>We can't back up console storage for you. Please back up anything you can't lose before we collect the device. See section 9 of our <a href="terms.html">Terms of Service</a>.</p>
+
+    <h2 id="sms">7. Calls, texts &amp; email</h2>
+    <p>We contact you about <strong>your repair only</strong>: confirming your pickup window, sending your estimate, and telling you when your console is ready. Standard message and data rates may apply.</p>
+    <p>We don't run a marketing list. We don't send promotional texts or newsletters, and we don't share or sell your phone number. Reply STOP to any text to stop texts — we'll use phone or email instead so we can still reach you about your repair.</p>
+
+    <h2 id="cookies">8. Cookies &amp; analytics</h2>
+    <p>This site sets <strong>no cookies of its own</strong> and runs <strong>no analytics or advertising trackers</strong>. There's no consent banner because there's nothing to consent to.</p>
+    <p>Your browser may cache fonts, map tiles and scripts from the third parties in section 4 as part of loading the page normally. If you'd rather block those, a content blocker or your browser's privacy settings will do it — the booking form still works.</p>
+
+    <h2 id="retention">9. How long we keep it</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>What</th><th>How long</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Booking enquiries that don't become repairs</td><td>12 months</td><td>So we have context if you come back</td></tr>
+          <tr><td>Completed repair records</td><td>3 years</td><td>Warranty claims and repeat-customer history</td></tr>
+          <tr><td>Payment &amp; tax records</td><td>7 years</td><td>Required for tax and accounting purposes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>After those periods we delete the records or strip them of anything that identifies you. You can ask us to delete your information sooner — see below.</p>
+
+    <h2 id="rights">10. Your choices &amp; rights</h2>
+    <p>Whatever state you're in, you can ask us to:</p>
+    <ul>
+      <li><strong>Tell you what we hold</strong> about you, and where it came from.</li>
+      <li><strong>Correct</strong> anything that's wrong.</li>
+      <li><strong>Delete</strong> your information, except records we're legally required to keep (payment and tax records, mainly) or that we need for an open repair or live warranty.</li>
+      <li><strong>Stop contacting you</strong>, or switch which method we use.</li>
+    </ul>
+    <p>Email <a href="mailto:contact@repairstationmiami.com">contact@repairstationmiami.com</a> or call <a href="tel:+13056992750">(305) 699-2750</a>. We respond within 30 days, usually much sooner. We won't charge you for a request or treat you differently for making one.</p>
+    <p>Florida residents: under the Florida Digital Bill of Rights you may have additional rights depending on the size of the business you're dealing with. We honour the requests above for everyone regardless of whether the statute applies to us, so you don't need to work out which thresholds we meet.</p>
+    <p><strong>We do not sell personal information, and we do not share it for cross-context behavioural advertising</strong> — so there's no opt-out to offer, because there's nothing to opt out of.</p>
+
+    <h2 id="security">11. Security</h2>
+    <p>The site is served over HTTPS. Payment data goes directly to Stripe and never transits our systems. Booking submissions travel over an encrypted connection to our email inbox, which is protected by a strong unique password and two-factor authentication. Repair records are kept on access-controlled devices.</p>
+    <p>We're a small operation and we keep our data footprint deliberately small — collecting less is the most reliable security measure available to us. That said, no method of transmission or storage is perfectly secure, and we can't guarantee absolute security.</p>
+
+    <h2 id="children">12. Children</h2>
+    <p>Our service is intended for adults. We don't knowingly collect personal information from anyone under 13. A parent or guardian should make the booking and be present for pickup and delivery. If you believe a child has given us information, contact us and we'll delete it.</p>
+
+    <h2 id="changes">13. Changes to this policy</h2>
+    <p>If we change how we handle your information, we'll update this page and move the "last updated" date at the top. If a change is significant — a new processor, or a genuinely new use of your data — we'll say so clearly here rather than quietly editing a line.</p>
+
+    <h2 id="contact">14. Contact us</h2>
+    <p>Any question about your privacy, or to make one of the requests in section 10:</p>
+    <dl class="facts">
+      <div><dt>Business</dt><dd>RepairStation LLC</dd></div>
+      <div><dt>Owner</dt><dd>Pablo R. Casanova</dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:contact@repairstationmiami.com">contact@repairstationmiami.com</a></dd></div>
+      <div><dt>Phone / text</dt><dd><a href="tel:+13056992750">(305) 699-2750</a></dd></div>
+      <div><dt>Location</dt><dd>Miami, Florida, United States</dd></div>
+      <div><dt>Response time</dt><dd>Within 30 days, usually within 1 business day</dd></div>
+    </dl>
+
+  </div>
+</main>
+
+<footer class="doc">
+  <div class="wrap">
+    <p>© <span id="year">2026</span> RepairStation · Miami, FL</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="index.html#book">Book a pickup</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

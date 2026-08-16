@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — RepairStation</title>
+<meta name="description" content="Terms of Service for RepairStation, a mobile video game console and handheld repair service in Miami, Florida. Booking, estimates, payment, refunds, and warranty.">
+<link rel="canonical" href="https://repairstationmiami.com/terms.html">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ─────────────────────────────────────────────────────────────
+     HEADS UP — before this goes live, confirm two things:
+       1. "RepairStation LLC" below matches the entity name exactly as
+          registered with Florida Sunbiz AND as it appears on the Stripe
+          account. A mismatch is a common cause of activation holdups.
+       2. A Florida attorney has read this. It is a solid starting draft
+          written around how RepairStation actually operates, not legal advice.
+     ───────────────────────────────────────────────────────────── -->
+
+<style>
+  :root {
+    --white:#fff; --surface:#f5f5f7; --surface-2:#fafafa;
+    --ink:#1d1d1f; --ink-soft:#424245; --muted:#6e6e73;
+    --hairline:#d2d2d7; --hairline-soft:#e8e8ed;
+    --ps-red:#e0383e; --ps-blue:#1b6ce6; --ps-teal:#12a890; --ps-pink:#d4419e;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'Space Mono',ui-monospace,monospace;
+    --maxw:760px; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .rainbow-rule{height:4px;width:100%;border:none;border-radius:4px;
+    background:linear-gradient(to right,#61bb46,#fdb827,#f5821f,#e03a3e,#963d97,#009ddc)}
+
+  .topbar{border-bottom:1px solid var(--hairline-soft);padding:18px 0;position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(18px);z-index:10}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand-name{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.4px;color:var(--ink);text-decoration:none}
+  .back{font-size:14px;color:var(--muted);text-decoration:none}
+  .back:hover{color:var(--ink)}
+
+  header.doc{padding:56px 0 34px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,5vw,42px);line-height:1.1;letter-spacing:-.02em;margin-bottom:18px}
+  header.doc .rainbow-rule{max-width:120px;margin-bottom:22px}
+  .updated{font-size:14px;color:var(--muted)}
+  .lede{font-size:16.5px;color:var(--ink-soft);margin-top:18px}
+
+  main.doc{padding-bottom:64px}
+  h2{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em;margin:38px 0 12px;scroll-margin-top:80px}
+  h3{font-family:var(--body);font-weight:600;font-size:16px;margin:22px 0 8px}
+  p{margin-bottom:14px;color:var(--ink-soft)}
+  ul,ol{margin:0 0 16px 22px;color:var(--ink-soft)}
+  li{margin-bottom:8px}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--ps-blue)}
+
+  .toc{background:var(--surface-2);border:1px solid var(--hairline-soft);border-radius:var(--radius);padding:22px 26px;margin:28px 0 8px}
+  .toc h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:400}
+  .toc ol{margin:0 0 0 18px;columns:2;column-gap:28px}
+  .toc li{margin-bottom:6px;font-size:14px}
+  .toc a{color:var(--ink-soft);text-decoration:none}
+  .toc a:hover{color:var(--ps-blue);text-decoration:underline}
+  @media (max-width:560px){.toc ol{columns:1}}
+
+  .callout{border-left:3px solid var(--ps-teal);background:var(--surface-2);
+    border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .callout p:last-child{margin-bottom:0}
+  .callout.warn{border-left-color:var(--ps-red)}
+
+  dl.facts{border:1px solid var(--hairline);border-radius:var(--radius);overflow:hidden;margin:18px 0}
+  dl.facts div{display:flex;gap:16px;padding:12px 18px;border-bottom:1px solid var(--hairline-soft)}
+  dl.facts div:last-child{border-bottom:none}
+  dl.facts dt{font-size:13px;color:var(--muted);flex:none;width:150px}
+  dl.facts dd{font-size:14.5px;color:var(--ink);font-weight:500}
+  @media (max-width:520px){dl.facts div{flex-direction:column;gap:2px}dl.facts dt{width:auto}}
+
+  footer.doc{border-top:1px solid var(--hairline-soft);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+  footer.doc .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+  footer.doc a{color:var(--ink-soft);text-decoration:none}
+  footer.doc a:hover{color:var(--ink)}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="brand-name">RepairStation</a>
+    <a href="index.html" class="back">← Back to site</a>
+  </div>
+</div>
+
+<header class="doc">
+  <div class="wrap">
+    <div class="kicker">Legal</div>
+    <h1>Terms of Service</h1>
+    <div class="rainbow-rule"></div>
+    <p class="updated">Effective August 12, 2026 · Last updated August 12, 2026</p>
+    <p class="lede">These terms cover what you can expect from RepairStation and what we need from you when you book a repair. Plain language on purpose — if something here is unclear, call or text us at (305) 699-2750 and we'll explain it before you book.</p>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+
+    <div class="toc">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#who">Who we are</a></li>
+        <li><a href="#services">What we do</a></li>
+        <li><a href="#booking">Booking a pickup</a></li>
+        <li><a href="#diagnostics">Diagnostics &amp; estimates</a></li>
+        <li><a href="#pricing">Pricing &amp; payment</a></li>
+        <li><a href="#refunds">Cancellations &amp; refunds</a></li>
+        <li><a href="#warranty">30-day warranty</a></li>
+        <li><a href="#turnaround">Turnaround times</a></li>
+        <li><a href="#data">Your data &amp; saved games</a></li>
+        <li><a href="#yourdevice">Your responsibilities</a></li>
+        <li><a href="#unclaimed">Unclaimed devices</a></li>
+        <li><a href="#limits">What we're not liable for</a></li>
+        <li><a href="#refuse">Refusing or stopping work</a></li>
+        <li><a href="#sms">Calls &amp; text messages</a></li>
+        <li><a href="#changes">Changes to these terms</a></li>
+        <li><a href="#law">Governing law</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </div>
+
+    <h2 id="who">1. Who we are</h2>
+    <p>RepairStation is a mobile video game console and gaming handheld repair service operating in Miami-Dade County, Florida. We have no walk-in storefront — we collect your device from your door, repair it on our bench, and deliver it back.</p>
+    <dl class="facts">
+      <div><dt>Legal entity</dt><dd>RepairStation LLC</dd></div>
+      <div><dt>Trading as</dt><dd>RepairStation</dd></div>
+      <div><dt>Owner / technician</dt><dd>Pablo R. Casanova</dd></div>
+      <div><dt>Location</dt><dd>Miami, Florida, United States</dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+13056992750">(305) 699-2750</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:contact@repairstationmiami.com">contact@repairstationmiami.com</a></dd></div>
+      <div><dt>Hours</dt><dd>Every day, 11:00am – 11:00pm ET</dd></div>
+    </dl>
+    <p>In these terms, "we", "us" and "RepairStation" mean RepairStation LLC. "You" means the person booking or paying for a repair. By booking a pickup, you agree to these terms.</p>
+
+    <h2 id="services">2. What we do</h2>
+    <p>We repair current-generation consoles and gaming handhelds, including:</p>
+    <ul>
+      <li>PlayStation 5</li>
+      <li>Xbox Series X and Series S</li>
+      <li>Nintendo Switch 2 and Nintendo Switch OLED</li>
+      <li>Steam Deck</li>
+      <li>ASUS ROG Ally</li>
+      <li>Controllers for the above systems</li>
+    </ul>
+    <p>Common jobs include HDMI port replacement, disc drive repair, USB-C and charging port repair, overheating and fan service with thermal compound replacement, controller stick drift repair, and board-level and liquid damage work. We do not sell consoles, games, accessories, or subscriptions — we only sell repair labour and the parts used in those repairs.</p>
+    <p>We serve Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne and Pinecrest, and the wider Miami-Dade County area on request. Pickup and delivery are included in every quoted price. There is no travel fee, trip charge, or delivery surcharge.</p>
+
+    <h2 id="booking">3. Booking a pickup</h2>
+    <p>You book by submitting the form at <a href="index.html#book">repairstationmiami.com</a>, or by calling or texting us. A submitted booking is a <strong>request</strong>, not a confirmed appointment. We'll contact you — normally within a few hours, and no later than 12 hours — to confirm a pickup window.</p>
+    <p>A booking becomes an agreement only once we've confirmed the window with you and collected the device.</p>
+
+    <h2 id="diagnostics">4. Diagnostics &amp; estimates</h2>
+    <div class="callout">
+      <p><strong>Diagnostics are free, on every device, with no obligation.</strong> If you don't like the estimate, we return your device at no charge.</p>
+    </div>
+    <p>After we collect your device we diagnose the fault and give you a <strong>written estimate</strong> — by text or email — before any work begins. The estimate lists the fault we found, the work proposed, the parts required, and the total price.</p>
+    <p>No work starts until you approve that estimate. If we open the device and find a second, unrelated fault, or the repair turns out to be more involved than the estimate assumed, we stop and send you a revised estimate. You are never charged more than the figure you approved without approving a new one first.</p>
+
+    <h2 id="pricing">5. Pricing &amp; payment</h2>
+    <p>Prices shown on our website are <strong>starting prices</strong> for the most common version of each repair. Your actual price is the one on your written estimate. As a guide:</p>
+    <dl class="facts">
+      <div><dt>HDMI port repair</dt><dd>from $149</dd></div>
+      <div><dt>Disc drive repair</dt><dd>from $129</dd></div>
+      <div><dt>Charging port repair</dt><dd>from $99</dd></div>
+      <div><dt>Overheating / fan service</dt><dd>from $99</dd></div>
+      <div><dt>Controller stick drift</dt><dd>from $49</dd></div>
+      <div><dt>Diagnostics</dt><dd>Free</dd></div>
+      <div><dt>Pickup &amp; delivery</dt><dd>Free</dd></div>
+    </dl>
+    <p>All prices are in US dollars and include applicable sales tax where it applies. Board-level and liquid damage work is quoted individually after diagnosis.</p>
+    <h3>How you can pay</h3>
+    <p>We accept cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, and credit and debit cards. Card and digital wallet payments are processed by <strong>Stripe</strong>. We never see or store your full card number — see our <a href="privacy.html">Privacy Policy</a>.</p>
+    <p>Card charges appear on your statement as <strong>REPAIRSTATION</strong> or a similar descriptor containing our name.</p>
+    <h3>When you pay</h3>
+    <p>After you approve the estimate, you can either pre-pay online or pay in person when we hand the device back. On some bookings we require payment to be settled before delivery — this depends on the type of repair, the parts involved, and the pickup location. Where that applies, <strong>we tell you when we confirm your pickup window</strong>, never at the door.</p>
+
+    <h2 id="refunds">6. Cancellations &amp; refunds</h2>
+    <h3>Cancelling before work starts</h3>
+    <p>You can cancel at any time before you approve the written estimate, for any reason, at no cost. If we've already collected the device, we return it free of charge. There is no cancellation fee and no diagnostic fee.</p>
+    <h3>No fix, no fee</h3>
+    <div class="callout">
+      <p>If we can't complete the repair, or the repair doesn't hold, <strong>you are not charged for our labour</strong>. If you've already paid, we refund that amount to your original payment method.</p>
+    </div>
+    <h3>Parts already installed</h3>
+    <div class="callout warn">
+      <p><strong>One exception.</strong> Some repairs need parts we order specifically for your device — this is common on Steam Deck, ROG Ally, and board-level work. Once such a part has been ordered and installed, <strong>its cost is non-refundable</strong>, even if a separate, later fault means the device can't be fully restored. The labour is still free under "no fix, no fee".</p>
+      <p>We will always tell you, in the written estimate, when a repair involves a special-order part and what that part costs, <em>before</em> you approve it. If you'd rather not take that risk, decline the estimate and we'll return the device free.</p>
+    </div>
+    <h3>Refund timing</h3>
+    <p>Approved refunds are issued to the original payment method. Card refunds processed through Stripe typically appear within 5–10 business days, depending on your bank. Cash, Zelle, Cash App and Venmo payments are refunded by the same method, normally within 2 business days.</p>
+    <h3>How to request a refund</h3>
+    <p>Call or text <a href="tel:+13056992750">(305) 699-2750</a> or email <a href="mailto:contact@repairstationmiami.com">contact@repairstationmiami.com</a>. We respond to every refund request within 2 business days. Please contact us before opening a dispute with your bank — almost everything is faster to fix directly.</p>
+
+    <h2 id="warranty">7. 30-day warranty</h2>
+    <p>Every completed repair carries a <strong>30-day warranty</strong> from the date we return the device. If the same fault comes back within 30 days, we collect the device, re-repair it, and return it at no charge.</p>
+    <p>Our first remedy is always to re-repair. If we can't resolve the same fault on a second attempt, we refund what you paid for that repair, less any non-refundable special-order parts described in section 6.</p>
+    <p>The warranty covers the specific repair we performed and the parts we installed. It does <strong>not</strong> cover:</p>
+    <ul>
+      <li>A new or unrelated fault that appears after the repair</li>
+      <li>New physical damage, drops, or liquid exposure after we returned the device</li>
+      <li>Damage from someone else opening or working on the device after us</li>
+      <li>Normal wear, or faults caused by software, firmware, or system updates</li>
+    </ul>
+
+    <h2 id="turnaround">8. Turnaround times</h2>
+    <p>Most repairs are completed and delivered back <strong>within 3 days of pickup</strong>. That's a typical timeframe, not a guarantee — board-level work, liquid damage, and repairs needing a special-order part can take longer.</p>
+    <p>If your repair is going to run past 3 days, we tell you and give you a revised estimate of when it'll be ready. You can cancel and have the device returned at any point while it's still with us, subject to section 6.</p>
+
+    <h2 id="data">9. Your data &amp; saved games</h2>
+    <p>For the vast majority of repairs we don't touch your storage, and your saved games, accounts and downloads are untouched. Some repairs — particularly storage, board-level, and liquid damage work — carry a genuine risk of data loss. Where that risk exists, <strong>we tell you in the written estimate, before you approve it</strong>.</p>
+    <p>We do not have the means to back up console storage for you. <strong>Please back up anything you can't lose before we collect the device.</strong> We are not responsible for lost saves, screenshots, or downloaded content.</p>
+    <p>We don't browse your files, accounts, or media. We only interact with your device as far as diagnosing and fixing the reported fault requires. How we handle your personal information is covered in our <a href="privacy.html">Privacy Policy</a>.</p>
+
+    <h2 id="yourdevice">10. Your responsibilities</h2>
+    <p>When you book with us, you confirm that:</p>
+    <ul>
+      <li>You own the device, or have the owner's permission to have it repaired.</li>
+      <li>The device is not reported lost or stolen.</li>
+      <li>You've told us about any prior repair attempts, liquid exposure, or existing damage you know about. Undisclosed prior work can make a repair impossible and can affect what we're able to guarantee.</li>
+      <li>You've removed any discs, game cards, memory cards, or accessories you want to keep — we're not responsible for items left in or attached to the device.</li>
+      <li>You'll be reachable during your confirmed pickup and delivery windows, and that someone aged 18 or over will hand over and receive the device.</li>
+    </ul>
+
+    <h2 id="unclaimed">11. Unclaimed devices</h2>
+    <p>If your repair is finished and we can't reach you or complete delivery, we'll hold the device and keep trying to contact you by phone, text and email. After <strong>60 days</strong> from our first delivery attempt, with no response from you, we may treat the device as abandoned and dispose of it in accordance with Florida law. We'd much rather return it — please keep your contact details current.</p>
+
+    <h2 id="limits">12. What we're not liable for</h2>
+    <p>We do careful work and stand behind it, but there are limits to what we can take on:</p>
+    <ul>
+      <li>Our total liability for any claim connected to a repair is capped at the amount you paid us for that repair.</li>
+      <li>We are not liable for indirect or consequential losses — lost game progress, missed tournaments, lost income, or the cost of a replacement device while yours is with us.</li>
+      <li>We are not liable for pre-existing faults we didn't cause and weren't hired to fix, or for faults that only become apparent because a device that previously wouldn't power on now does.</li>
+      <li>Opening a console generally voids the manufacturer's warranty. If your device is still under manufacturer warranty, tell us — you may be better off going to them, and we'll say so.</li>
+    </ul>
+    <p>Nothing in these terms limits any liability that can't be limited under Florida or US federal law, including for fraud or personal injury caused by negligence.</p>
+
+    <h2 id="refuse">13. Refusing or stopping work</h2>
+    <p>We may decline a booking, or stop work and return the device, if: the device is unsafe to work on (for example a swollen or damaged battery); we believe it may be stolen; the repair isn't technically possible; prior work has left the board unrecoverable; or a customer is abusive to our technician. In any of these cases you're charged nothing and we return the device.</p>
+
+    <h2 id="sms">14. Calls &amp; text messages</h2>
+    <p>When you give us your phone number, you agree that we can call and text you <strong>about your repair</strong> — confirming your pickup window, sending your estimate, and letting you know when your device is ready. Standard message and data rates may apply.</p>
+    <p>These are service messages, not marketing. We don't send promotional texts and we don't sell or share your number. Reply STOP at any time to stop texts; we'll switch to phone or email so we can still reach you about your repair.</p>
+
+    <h2 id="changes">15. Changes to these terms</h2>
+    <p>We may update these terms as the business changes. The "last updated" date at the top always reflects the current version. <strong>The terms that apply to your repair are the ones published when you booked</strong> — we don't apply changes retroactively to a repair already in progress.</p>
+
+    <h2 id="law">16. Governing law</h2>
+    <p>These terms are governed by the laws of the State of Florida, without regard to its conflict-of-laws rules. Any dispute will be brought in the state or federal courts located in Miami-Dade County, Florida, and both you and we consent to that venue.</p>
+    <p>If any part of these terms is found unenforceable, the rest stays in force.</p>
+
+    <h2 id="contact">17. Contact us</h2>
+    <p>Questions about these terms, a repair, or a refund:</p>
+    <dl class="facts">
+      <div><dt>Phone / text</dt><dd><a href="tel:+13056992750">(305) 699-2750</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:contact@repairstationmiami.com">contact@repairstationmiami.com</a></dd></div>
+      <div><dt>Hours</dt><dd>Every day, 11:00am – 11:00pm ET</dd></div>
+      <div><dt>Response time</dt><dd>Within 12 hours; refund requests within 2 business days</dd></div>
+    </dl>
+
+  </div>
+</main>
+
+<footer class="doc">
+  <div class="wrap">
+    <p>© <span id="year">2026</span> RepairStation · Miami, FL</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="index.html#book">Book a pickup</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
