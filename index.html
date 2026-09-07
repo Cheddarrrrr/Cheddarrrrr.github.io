@@ -2263,8 +2263,11 @@
       map.setView(bounds.getCenter(), 12);
 
       // Voyager no-labels — note the rastertiles/ prefix, which only Voyager
-      // needs (Positron/Dark Matter live at the top level, e.g. light_nolabels)
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+      // needs (Positron/Dark Matter live at the top level, e.g. light_nolabels).
+      // ?key= is CARTO's basemap API key (free tier, registered to
+      // repairstationmiami.com). Without it CARTO serves an "API KEY REQUIRED"
+      // watermark tile instead of the map.
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png?key=cb1_2zmh_1_023da0e288b8fa1d487590e9', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 19
