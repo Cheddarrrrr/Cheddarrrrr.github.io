@@ -37,9 +37,13 @@
 <!-- ============================================================
      RepairStation - single-file website
      Personalization checklist:
-     1. Phone number      — done (Google Voice, (305) 699-2750)
+     1. Phone number      — done ((305) 699-2750, porting Google Voice → Quo)
      2. Email address     — done (contact@repairstationmiami.com)
-     3. Booking form       — done (wired to Web3Forms)
+     3. Booking form       — done (Web3Forms for the email + confirmation;
+                             also beacons to an Apps Script web app that texts
+                             the customer via Quo — see AUTOTEXT_URL below.
+                             Inert until QUO_FROM_NUMBER is set in the script's
+                             Script Properties, which needs the port + A2P done.)
      4. About section text  — done (Pablo R. Casanova)
      5. Address validation — done (Geoapify key added)
      6. Payments           — Stripe checkout still to be wired up (see TODO stripe)
@@ -1854,7 +1858,7 @@
         <!-- 5 — contact -->
         <div class="wz-step" data-step="5">
           <h3 class="wz-q">How can we reach you?</h3>
-          <p class="wz-sub">We'll text within a few hours to confirm your pickup window. No marketing, ever.</p>
+          <p class="wz-sub">We'll text within a few hours to confirm your pickup window, starting with an automated confirmation right after you submit. Reply STOP any time. No marketing, ever.</p>
           <div class="field-row">
             <div class="field">
               <label for="fname">First name <span class="req">*</span></label>
@@ -1904,7 +1908,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <p class="form-foot">No payment now — you'll get a written estimate before any work starts. We'll get in touch within 12 hours to confirm your pickup window.<br>
-            By requesting a pickup you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+            By requesting a pickup you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>, and agree that RepairStation LLC may text you about your repair at the number you provide — starting with an automated confirmation as soon as you submit this form. Message frequency varies; message and data rates may apply. Reply STOP to opt out, HELP for help. We never send marketing texts.</p>
           <div class="form-msg" id="formMsg"></div>
         </div>
 
@@ -2676,6 +2680,37 @@
   var addressInput = document.getElementById('address');
   var submitBtnDefaultHTML = submitBtn.innerHTML;
 
+  // Auto-text backup: independent fire-and-forget ping to an Apps Script web app,
+  // which texts the customer a confirmation via Quo. Runs alongside Web3Forms, which
+  // still handles the email notification and the visible confirmation.
+  // sendBeacon (not fetch) because we navigate to confirmed.html right after submit,
+  // which would cancel a normal in-flight request.
+  var AUTOTEXT_URL = 'https://script.google.com/macros/s/PASTE_YOUR_DEPLOYMENT_ID/exec';
+
+  function fireAutoText(form) {
+    try {
+      var params = new URLSearchParams();
+      new FormData(form).forEach(function (value, key) {
+        if (key === 'access_key' || key === 'botcheck') return; // don't forward these
+        params.append(key, value);
+      });
+      // params.append('token', 'PASTE_SHARED_TOKEN'); // only if you set SHARED_TOKEN
+
+      var body = params.toString();
+      if (navigator.sendBeacon) {
+        var blob = new Blob([body], { type: 'application/x-www-form-urlencoded' });
+        if (navigator.sendBeacon(AUTOTEXT_URL, blob)) return;
+      }
+      fetch(AUTOTEXT_URL, {
+        method: 'POST', mode: 'no-cors', keepalive: true,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
+      });
+    } catch (err) {
+      /* never let the auto-text break the real submit */
+    }
+  }
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     msg.className = 'form-msg';
@@ -2703,6 +2738,10 @@
       }
       submitBtn.textContent = 'Sending…';
     }
+
+    // Fire before Web3Forms and before form.reset() below, so the customer still gets
+    // their text even if Web3Forms is down.
+    fireAutoText(form);
 
     try {
       var res = await fetch(form.action, {

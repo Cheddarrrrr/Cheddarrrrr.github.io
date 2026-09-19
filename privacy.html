@@ -18,10 +18,16 @@
        1. Confirm "RepairStation LLC" matches the Sunbiz registration and
           the Stripe account name.
        2. The third-party list in section 4 is drawn from what the site
-          actually loads today (Web3Forms, Geoapify, Stripe, GitHub Pages,
-          Google Fonts, CARTO/OpenStreetMap, unpkg). If you add analytics,
-          a booking database, a chat widget, or an ads pixel, this section
-          MUST be updated — an inaccurate processor list is worse than none.
+          actually loads today (Web3Forms, Google Apps Script, Quo, Geoapify,
+          Stripe, GitHub Pages, Google Fonts, CARTO/OpenStreetMap, unpkg).
+          If you add analytics, a booking database, a chat widget, or an ads
+          pixel, this section MUST be updated — an inaccurate processor list
+          is worse than none.
+       4. The Google Apps Script + Quo rows and the automated-text paragraph
+          in section 7 describe the booking-form auto-text. It only starts
+          sending once AUTOTEXT_URL is filled in in index.html AND the Quo
+          number is live, so publish this page at the same time you switch
+          that on — not before, and not after.
        3. Have a Florida attorney read it. Good draft, not legal advice.
      ───────────────────────────────────────────────────────────── -->
 
@@ -116,7 +122,7 @@
     <div class="kicker">Legal</div>
     <h1>Privacy Policy</h1>
     <div class="rainbow-rule"></div>
-    <p class="updated">Effective August 12, 2026 · Last updated August 12, 2026</p>
+    <p class="updated">Effective August 12, 2026 · Last updated September 18, 2026</p>
     <p class="lede">We're a small repair shop, not an advertising business. We collect what we need to pick up your console, fix it, and bring it back — and nothing else. We have never sold customer data and we don't intend to start.</p>
   </div>
 </header>
@@ -149,6 +155,7 @@
       <p><strong>We collect:</strong> your name, phone number, optional email, the neighborhood or address we're collecting from, and what's wrong with your console.</p>
       <p><strong>We use it for:</strong> arranging your pickup, sending your estimate, doing the repair, taking payment, and honouring your warranty.</p>
       <p><strong>We never:</strong> sell your data, rent it, share it with advertisers, or send you marketing you didn't ask for.</p>
+      <p><strong>Your mobile number:</strong> we do not share, sell, or provide your mobile phone number or messaging consent data to third parties or affiliates for marketing or promotional purposes.</p>
       <p><strong>We never see your full card number</strong> — Stripe handles that end to end.</p>
     </div>
     <p>This policy applies to <a href="https://repairstationmiami.com/">repairstationmiami.com</a> and to the repair service itself. RepairStation LLC ("we", "us") is the business responsible for the information described here.</p>
@@ -187,7 +194,7 @@
     <p>We don't use your information to build a profile, score you, or make automated decisions about you.</p>
 
     <h2 id="share">4. Who else processes it</h2>
-    <p>We use a small number of third-party services to run the site and the business. Each one only receives what it needs. We don't share your information with anyone else, and we don't sell it.</p>
+    <p>We use a small number of third-party services to run the site and the business. Each one only receives what it needs. They act as our <strong>service providers</strong>: they process your information on our behalf, to deliver the service you asked for, under their own contractual and privacy obligations. None of them is permitted to use your information for its own marketing or to sell it on. We don't share your information with anyone else, and we don't sell it.</p>
     <div class="tbl-scroll">
       <table>
         <thead><tr><th>Service</th><th>What it handles</th><th>What it receives</th></tr></thead>
@@ -201,6 +208,16 @@
             <td>Web3Forms</td>
             <td>Delivers the booking form to our inbox</td>
             <td>Everything you type into the booking form</td>
+          </tr>
+          <tr>
+            <td>Google Apps Script</td>
+            <td>Runs the script that sends your booking confirmation text</td>
+            <td>Everything you type into the booking form</td>
+          </tr>
+          <tr>
+            <td>Quo (formerly OpenPhone)</td>
+            <td>Our business phone line — calls and texts</td>
+            <td>Your phone number and, for the confirmation text, your first name and console type. Also the content of any calls or texts between us.</td>
           </tr>
           <tr>
             <td>Geoapify</td>
@@ -230,6 +247,9 @@
         </tbody>
       </table>
     </div>
+    <div class="callout">
+      <p><strong>Mobile information is never shared for marketing.</strong> We do not share, sell, or provide your mobile phone number or messaging consent data to third parties or affiliates for marketing or promotional purposes. The service providers above receive your number only to deliver the messages you asked for — Quo carries our texts and calls, and Google Apps Script triggers your booking confirmation. Neither may use your number for its own marketing, sell it on, or pass it to anyone else.</p>
+    </div>
     <p>Each of these processes data under its own privacy policy. We may also disclose information if we're legally required to — a subpoena, court order, or law enforcement request we're obliged to honour — or where it's necessary to establish or defend a legal claim.</p>
 
     <h2 id="payments">5. Payments &amp; card data</h2>
@@ -251,7 +271,9 @@
 
     <h2 id="sms">7. Calls, texts &amp; email</h2>
     <p>We contact you about <strong>your repair only</strong>: confirming your pickup window, sending your estimate, and telling you when your console is ready. Standard message and data rates may apply.</p>
-    <p>We don't run a marketing list. We don't send promotional texts or newsletters, and we don't share or sell your phone number. Reply STOP to any text to stop texts — we'll use phone or email instead so we can still reach you about your repair.</p>
+    <p>One of those texts is automated: as soon as you submit the booking form, a script sends a single message confirming we've received your request and using your first name and console type. That's the only automated text we send — everything after it is us, typing.</p>
+    <p>We don't run a marketing list. We don't send promotional texts or newsletters. <strong>We do not share, sell, or provide your mobile phone number or messaging consent data to third parties or affiliates for marketing or promotional purposes.</strong></p>
+    <p>Message frequency varies with your repair — typically a handful of messages per repair. Message and data rates may apply. Reply <strong>STOP</strong> to any text to stop texts, or <strong>HELP</strong> for help. If you opt out we'll use phone or email instead, so we can still reach you about your repair. Carriers are not liable for delayed or undelivered messages.</p>
 
     <h2 id="cookies">8. Cookies &amp; analytics</h2>
     <p>This site sets <strong>no cookies of its own</strong> and runs <strong>no analytics or advertising trackers</strong>. There's no consent banner because there's nothing to consent to.</p>
@@ -283,7 +305,7 @@
     <p><strong>We do not sell personal information, and we do not share it for cross-context behavioural advertising</strong> — so there's no opt-out to offer, because there's nothing to opt out of.</p>
 
     <h2 id="security">11. Security</h2>
-    <p>The site is served over HTTPS. Payment data goes directly to Stripe and never transits our systems. Booking submissions travel over an encrypted connection to our email inbox, which is protected by a strong unique password and two-factor authentication. Repair records are kept on access-controlled devices.</p>
+    <p>The site is served over HTTPS. Payment data goes directly to Stripe and never transits our systems. Booking submissions travel over an encrypted connection to our email inbox and to the service providers listed in section 4; the inbox is protected by a strong unique password and two-factor authentication. Repair records are kept on access-controlled devices.</p>
     <p>We're a small operation and we keep our data footprint deliberately small — collecting less is the most reliable security measure available to us. That said, no method of transmission or storage is perfectly secure, and we can't guarantee absolute security.</p>
 
     <h2 id="children">12. Children</h2>
