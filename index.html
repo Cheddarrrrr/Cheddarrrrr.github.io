@@ -71,7 +71,7 @@
       "url": "https://repairstationmiami.com/",
       "telephone": "+1-305-699-2750",
       "email": "contact@repairstationmiami.com",
-      "priceRange": "$49–$249",
+      "priceRange": "$59–$249",
       "currenciesAccepted": "USD",
       "paymentAccepted": "Cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, Credit Card, Debit Card",
       "image": "https://repairstationmiami.com/rs-profile.png",
@@ -223,7 +223,7 @@
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "99",
+              "price": "79",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
@@ -237,14 +237,14 @@
             "@type": "Offer",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "price": "49",
+              "price": "59",
               "priceCurrency": "USD",
               "valueAddedTaxIncluded": false
             },
             "itemOffered": {
               "@type": "Service",
               "name": "Controller stick drift repair",
-              "description": "Analog stick replacement or calibration to fix controller drift."
+              "description": "Both analog sticks replaced with Hall effect joysticks as standard to fix controller drift."
             }
           },
           {
@@ -1369,7 +1369,256 @@
 
   :focus-visible { outline: 2px solid var(--ps-blue); outline-offset: 3px; border-radius: 4px; }
 
+  /* ============================================================
+     MOBILE RETOOL (prototype) — phones only, 640px and under.
+     Idea: show the headline facts, reveal the detail on tap.
+     Everything is scoped to `.mjs`, a class the tiny script in <head>
+     adds, so without JavaScript phones keep the original stacked layout
+     and nothing is ever hidden with no way to open it.
+     Desktop and tablet are not touched by anything in this block.
+     ============================================================ */
+
+  /* Elements that only exist for the phone layout stay out of the way elsewhere. */
+  .m-only, .step-detail, .area-caption, .about-toggle, .nav-links .nav-links-book { display: none; }
+  .msheet[hidden] { display: none; }
+
+  /* ---------- detail sheet (shared by services and guarantees) ---------- */
+  .msheet { position: fixed; inset: 0; z-index: 300; --sheet-c: var(--ps-blue); }
+  .msheet-scrim {
+    position: absolute; inset: 0; background: rgba(29, 29, 31, 0.42);
+    opacity: 0; transition: opacity 0.25s ease; touch-action: none;
+  }
+  .msheet-panel {
+    --svc-color: var(--sheet-c);
+    position: absolute; left: 0; right: 0; bottom: 0;
+    max-height: 86dvh; overflow-y: auto; overscroll-behavior: contain;
+    background: var(--white); border-radius: 22px 22px 0 0;
+    border-top: 4px solid var(--sheet-c);
+    padding: 10px 22px calc(22px + env(safe-area-inset-bottom));
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.18);
+    transform: translateY(102%);
+    transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+    outline: none;
+  }
+  .msheet.is-open .msheet-scrim { opacity: 1; }
+  .msheet.is-open .msheet-panel { transform: translateY(0); }
+  .msheet.is-dragging .msheet-panel { transition: none; }
+  .msheet-grab { width: 40px; height: 5px; border-radius: 5px; background: var(--hairline); margin: 0 auto 14px; }
+  .msheet-x {
+    position: absolute; top: 14px; right: 14px; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: none; border-radius: 50%; color: var(--muted); cursor: pointer;
+  }
+  .msheet-x svg { width: 20px; height: 20px; }
+  .msheet-head { display: flex; align-items: center; gap: 14px; padding-right: 44px; margin-bottom: 14px; min-height: 48px; }
+  .msheet-icon:empty { display: none; }
+  .msheet-icon .svc-icon { width: 48px; height: 48px; border-radius: 13px; flex: none; }
+  .msheet-icon .svc-icon svg { width: 25px; height: 25px; }
+  .msheet-head h3 { font-family: var(--display); font-weight: 600; font-size: 21px; line-height: 1.2; letter-spacing: -0.015em; }
+  .msheet-price { font-family: var(--mono); font-weight: 700; font-size: 14px; color: var(--ink); margin-top: 3px; }
+  .msheet-price:empty { display: none; }
+  .msheet-body { font-size: 16px; line-height: 1.55; color: var(--ink-soft); }
+  .msheet-tags { margin-top: 16px; }
+  .msheet-tags:empty { display: none; }
+  .msheet-tags-label { font-size: 13px; color: var(--muted); margin-bottom: 7px; }
+  .msheet-tags .svc-tags { gap: 6px; }
+  .msheet-tags .svc-tag { font-size: 12px; padding: 5px 10px; }
+  .msheet-cta { margin-top: 22px; width: 100%; justify-content: center; }
+
+  @media (max-width: 640px) {
+
+    /* ---------- shared rhythm ---------- */
+    .mjs .m-only { display: inline; }
+    .mjs .d-only { display: none; }
+    .mjs .wrap { padding: 0 20px; }
+    .mjs .section { padding: 40px 0; }
+    .mjs .section-head { margin-bottom: 20px; }
+    .mjs .kicker { margin-bottom: 10px; }
+    .mjs .section-head h2 { font-size: 26px; margin-bottom: 10px; }
+    .mjs .section-head .head-rule { margin-bottom: 12px; }
+    .mjs .section-head p { font-size: 15.5px; line-height: 1.5; }
+
+    /* ---------- header: "Book a pickup" moves into the menu ---------- */
+    .mjs .nav-book { display: none; }
+    .mjs .nav-links .nav-links-book { display: block; color: var(--ink); font-weight: 600; border-bottom: 0; }
+
+    /* ---------- hero: fills the first screen (height rule is the site's own) ---------- */
+    .mjs .hero { padding: 34px 0 30px; }
+    .mjs .hero h1 { margin-bottom: 18px; }
+    .mjs .hero .head-rule { margin-bottom: 20px; }
+    .mjs .hero-sub { font-size: 16.5px; margin-bottom: 24px; }
+    .mjs .hero-cta { flex-direction: column; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .mjs .hero-cta .btn-primary { width: min(100%, 300px); justify-content: center; padding: 18px 28px; font-size: 17px; }
+    .mjs .hero-cta .btn-ghost { justify-content: center; padding: 12px 26px; font-size: 15px; }
+    .mjs .hero-trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-items: start; font-size: 12.5px; line-height: 1.3; }
+    .mjs .hero-trust .pt { flex-direction: column; gap: 7px; text-align: center; }
+
+    /* ---------- how it works: four glyphs, one sentence at a time ---------- */
+    .mjs #how .section-head p { display: none; }
+    .mjs .steps { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .mjs .step {
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      padding: 9px 2px 11px; text-align: center; cursor: pointer;
+      background: var(--white);
+      border-color: color-mix(in srgb, var(--step-color) 30%, var(--hairline-soft));
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .mjs .step:hover { transform: none; box-shadow: none; background: var(--white); }
+    .mjs .step:active { transform: scale(0.95); }
+    .mjs .step.is-current, .mjs .step.is-current:hover {
+      background: color-mix(in srgb, var(--step-color) 12%, white);
+      border-color: var(--step-color);
+    }
+    .mjs .step-n { position: static; order: -1; font-size: 11px; line-height: 1; color: var(--muted); }
+    .mjs .step-sym { width: 28px; height: 28px; margin: 0; }
+    .mjs .step h3 { font-size: 13px; line-height: 1.2; margin: 0; }
+    .mjs .step p { display: none; }
+    .mjs .step-detail {
+      --step-color: var(--ps-red); --i: 0;
+      display: block; grid-column: 1 / -1; position: relative;
+      margin-top: 4px; padding: 14px 16px; min-height: 76px;
+      border: 1.5px solid var(--step-color); border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--step-color) 8%, white);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .mjs .step-detail[data-i="2"] { --step-color: var(--ps-pink); }
+    .mjs .step-detail[data-i="3"] { --step-color: var(--ps-teal); }
+    .mjs .step-detail[data-i="4"] { --step-color: var(--ps-blue); }
+    /* the notch points at whichever glyph is open */
+    .mjs .step-detail::before {
+      content: ""; position: absolute; top: -7px; width: 12px; height: 12px;
+      left: calc((100% - 24px) / 4 * (var(--i) + 0.5) + 8px * var(--i) - 6px);
+      background: color-mix(in srgb, var(--step-color) 8%, white);
+      border-left: 1.5px solid var(--step-color); border-top: 1.5px solid var(--step-color);
+      transform: rotate(45deg);
+      transition: left 0.34s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .mjs .step-detail p { font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+
+    /* ---------- services: six square tiles, detail in the sheet ---------- */
+    .mjs .devices-row { display: block; margin-top: 10px; max-width: none; text-align: center; line-height: 1.5; word-spacing: -2px; }
+    .mjs .device-chip { display: inline; border: 0; background: none; padding: 0; font-size: 11.5px; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
+    .mjs .device-chip:not(:last-child)::after { content: ","; }
+    .mjs .services { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .mjs .svc {
+      position: relative; aspect-ratio: 1; padding: 10px 5px 9px;
+      align-items: center; justify-content: space-between; text-align: center;
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+    }
+    .mjs .svc:hover { transform: none; box-shadow: none; background-color: var(--white); }
+    .mjs .svc:active { transform: scale(0.95); background-color: color-mix(in srgb, var(--svc-color) 12%, white); }
+    .mjs .svc:focus-visible { outline: 2px solid var(--svc-color); outline-offset: 2px; }
+    /* the "+" says the tile opens */
+    .mjs .svc::after {
+      content: "+"; position: absolute; top: 4px; right: 8px;
+      font-family: var(--mono); font-weight: 700; font-size: 14px; line-height: 1; color: var(--svc-color);
+    }
+    .mjs .svc-top { display: contents; }
+    .mjs .svc-icon { order: 1; width: 32px; height: 32px; border-radius: 9px; }
+    .mjs .svc-icon svg { width: 18px; height: 18px; }
+    .mjs .svc h3 { order: 2; font-size: 13px; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+    .mjs .svc-price { order: 3; font-size: 13px; line-height: 1.2; }
+    .mjs .svc-price small { display: inline; font-size: 10.5px; margin-left: 3px; }
+    .mjs .svc p, .mjs .svc .svc-tags { display: none; }
+
+    /* ---------- guarantees: three chips, detail in the sheet ---------- */
+    .mjs .svc-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+    .mjs .svc-note, .mjs .svc-note + .svc-note { display: block; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .mjs .svc-note > span:not(.badge) { display: none; }
+    /* one word per line (the huge word-spacing forces the break) so the three chips match */
+    .mjs .svc-note .badge {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 7px 8px; border-radius: var(--radius-sm);
+      font-size: 11px; line-height: 1.35; text-align: center; white-space: normal; word-spacing: 100vw;
+      color: #0b6b5c;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .mjs .svc-note .badge::after { content: "+"; position: absolute; top: 4px; right: 8px; font-size: 14px; line-height: 1; }
+    .mjs .svc-note:active .badge { transform: scale(0.95); }
+
+    /* ---------- service areas: shorter map, neighborhoods as a chip grid ---------- */
+    .mjs #areas { --map-h: clamp(380px, 56svh, 460px); }
+    .mjs .map-layout { gap: 12px; }
+    .mjs .map-panel { height: auto; gap: 0; }
+    .mjs .map-legend { display: none; }
+    /* the selected pin's line sits under the map */
+    .mjs .area-caption {
+      display: flex; align-items: flex-start; gap: 9px; min-height: 44px;
+      font-size: 14.5px; line-height: 1.45; color: var(--ink-soft);
+    }
+    .mjs .area-caption i { flex: none; width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; background: var(--c, var(--muted)); }
+    .mjs .area-caption b { color: var(--ink); font-weight: 600; }
+    .mjs .areas-foot { margin-top: 16px; font-size: 14.5px; }
+
+    /* ---------- about: one compact card, story behind "read more" ---------- */
+    .mjs #about .section-head { margin-bottom: 18px; }
+    .mjs .about-grid { gap: 18px; }
+    .mjs .about-card {
+      display: grid; grid-template-columns: 52px 1fr; column-gap: 13px; align-items: center;
+      padding: 20px 18px 18px;
+    }
+    .mjs .about-portrait { grid-column: 1; grid-row: 1 / span 2; width: 52px; height: 52px; border-radius: 12px; margin: 0; }
+    .mjs .about-card h3 { grid-column: 2; grid-row: 1; align-self: end; font-size: 19px; margin: 0; }
+    .mjs .about-role { grid-column: 2; grid-row: 2; align-self: start; margin: 0; font-size: 12px; }
+    .mjs .about-status { grid-column: 1 / -1; grid-row: 3; margin: 14px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+    .mjs .status-hours { margin: 0; }
+    .mjs .contact-grid { grid-column: 1 / -1; grid-row: 4; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .mjs .contact-tile { align-items: center; gap: 6px; padding: 10px 2px 9px; }
+    .mjs .contact-tile:hover { transform: none; box-shadow: none; }
+    .mjs .contact-tile span { font-size: 11.5px; }
+    .mjs .contact-call { grid-column: 1 / -1; grid-row: 5; margin: 16px -18px -18px; padding: 15px 18px; }
+    .mjs .about-copy p { font-size: 16px; margin-bottom: 12px; }
+    .mjs .about-copy:not(.is-open) p:nth-of-type(n+2) { display: none; }
+    .mjs .about-toggle {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--body); font-size: 15px; font-weight: 500; color: var(--ps-blue);
+    }
+    .mjs .about-toggle::before { content: "+"; font-family: var(--mono); font-weight: 700; font-size: 16px; line-height: 1; }
+    .mjs .about-copy.is-open .about-toggle::before { content: "–"; }
+
+    /* ---------- FAQ: same accordion, tighter rows ---------- */
+    .mjs .faq-q { padding: 15px 0; font-size: 16px; gap: 14px; line-height: 1.3; }
+    .mjs .faq-a p { font-size: 15px; padding-bottom: 16px; }
+
+    /* ---------- booking: two options per row so a step fits one screen ---------- */
+    .mjs .book-form { padding: 22px 18px 20px; }
+    .mjs .wz-head { margin-bottom: 18px; }
+    .mjs .wz-sub { margin-bottom: 14px; }
+    .mjs .wz-opts { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mjs .wz-opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .mjs .wz-card { padding: 12px 11px; gap: 9px; font-size: 14px; }
+    .mjs .field-row:has(#fname) { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mjs .wz-nav { margin-top: 16px; }
+
+    /* ---------- footer: contact, social, legal. The page links repeat the menu ---------- */
+    .mjs .footer { padding: 32px 0 28px; }
+    .mjs .footer-top { gap: 18px; margin-bottom: 22px; }
+    .mjs .footer-brand { max-width: none; }
+    .mjs .footer-cols { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; }
+    /* column order in the markup: Explore, Contact, Areas, Follow, Legal */
+    .mjs .footer-col:nth-child(1), .mjs .footer-col:nth-child(3) { display: none; }
+    .mjs .footer-col h4 { margin-bottom: 6px; }
+    .mjs .footer-col a, .mjs .footer-col span { margin-bottom: 0; padding: 5px 0; }
+    .mjs .footer-col:nth-child(4), .mjs .footer-col:nth-child(5) { display: flex; flex-wrap: wrap; gap: 0 20px; }
+    .mjs .footer-col:nth-child(4) h4, .mjs .footer-col:nth-child(5) h4 { display: none; }
+    .mjs .footer-bottom { padding-top: 18px; }
+  }
+
+  /* very narrow phones: three tiles across gets too tight for the names */
+  @media (max-width: 359px) {
+    .mjs .services { grid-template-columns: repeat(2, 1fr); }
+    .mjs .svc { aspect-ratio: 1.25; }
+    .mjs .step h3 { font-size: 12px; }
+  }
+
+
+
 </style>
+<!-- Switches on the phone layout (see MOBILE RETOOL in the stylesheet). In <head> so the page never paints the old layout first. -->
+<script>document.documentElement.classList.add('mjs');</script>
 </head>
 <body>
 
@@ -1389,6 +1638,7 @@
       <a href="#areas">Service areas</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
+      <a href="#book" class="nav-links-book">Book a pickup</a>
     </nav>
     <div class="nav-right">
       <a href="#book" class="nav-book"><span>Book a pickup</span></a>
@@ -1466,7 +1716,7 @@
       <div class="kicker">Services &amp; pricing</div>
       <h2 class="reveal-text">Straightforward repairs, honest prices.</h2>
       <div class="head-rule"></div>
-      <p>Starting prices below — pickup and delivery included, never billed on top. You'll get an exact quote at pickup before any work begins.</p>
+      <p><span class="d-only">Starting prices below — pickup and delivery included, never billed on top. You'll get an exact quote at pickup before any work begins.</span><span class="m-only">Pickup and delivery are included in every price. Tap a repair for the details.</span></p>
       <div class="devices-row">
         <span class="device-chip">PlayStation 5</span>
         <span class="device-chip">Xbox Series X/S</span>
@@ -1478,7 +1728,7 @@
     </div>
     <div class="services reveal">
 
-      <div class="svc">
+      <div class="svc" data-issue="No picture / HDMI">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M17 7V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3"/></svg></div>
           <div class="svc-price">$149<small>starting</small></div>
@@ -1488,7 +1738,7 @@
         <div class="svc-tags"><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
       </div>
 
-      <div class="svc">
+      <div class="svc" data-issue="Disc drive problem">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></svg></div>
           <div class="svc-price">$129<small>starting</small></div>
@@ -1498,7 +1748,7 @@
         <div class="svc-tags"><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span></div>
       </div>
 
-      <div class="svc">
+      <div class="svc" data-issue="Charging issue">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
           <div class="svc-price">$99<small>starting</small></div>
@@ -1508,27 +1758,27 @@
         <div class="svc-tags"><span class="svc-tag">Switch</span><span class="svc-tag">Steam Deck</span><span class="svc-tag">ROG Ally</span><span class="svc-tag">Controllers</span></div>
       </div>
 
-      <div class="svc">
+      <div class="svc" data-issue="Overheating / loud fan">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6m0 0a4 4 0 1 0 4 4M12 9a4 4 0 0 1 4 4"/><path d="M12 3a2 2 0 0 1 2 2v8"/></svg></div>
-          <div class="svc-price">$99<small>starting</small></div>
+          <div class="svc-price">$79<small>starting</small></div>
         </div>
         <h3>Overheating &amp; cleaning</h3>
         <p>Loud fans, shutdowns, thermal throttling, or dust buildup. Deep clean, fresh thermal compound, full fan service.</p>
         <div class="svc-tags"><span class="svc-tag">PS5</span><span class="svc-tag">Xbox</span><span class="svc-tag">Steam Deck</span><span class="svc-tag">ROG Ally</span></div>
       </div>
 
-      <div class="svc">
+      <div class="svc" data-issue="Stick drift">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-          <div class="svc-price">$49<small>starting</small></div>
+          <div class="svc-price">$59<small>starting</small></div>
         </div>
         <h3>Stick drift repair</h3>
-        <p>Character moving on its own? We replace the drifting stick module — Hall effect upgrades available on request.</p>
+        <p>Character moving on its own? We replace both sticks with Hall effect joysticks as standard. They use magnets instead of wearing contacts, so they're built to resist drift.</p>
         <div class="svc-tags"><span class="svc-tag">DualSense</span><span class="svc-tag">Xbox</span><span class="svc-tag">Joy-Con</span><span class="svc-tag">Steam Deck</span></div>
       </div>
 
-      <div class="svc">
+      <div class="svc" data-issue="Won't power on">
         <div class="svc-top">
           <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg></div>
           <div class="svc-price">Free<small>estimate</small></div>
@@ -1540,6 +1790,7 @@
 
     </div>
 
+    <div class="svc-notes">
     <div class="svc-note reveal">
       <span class="badge">30-DAY WARRANTY</span>
       <span>Every repair is backed by a 30-day warranty on parts and labor. If we can't fix it, you don't pay a cent.</span>
@@ -1557,6 +1808,7 @@
       <span class="badge">EASY PAYMENT</span>
       <span>Cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay and cards — processed securely through Stripe. Pre-pay online or settle up in person when we hand your console back.</span>
     </div>
+    </div>
   </div>
 </section>
 
@@ -1567,7 +1819,7 @@
       <div class="kicker">Service areas</div>
       <h2 class="reveal-text">Where we come to you.</h2>
       <div class="head-rule"></div>
-      <p>Free pickup and delivery across these Miami neighborhoods. Hover a pin — or its card — to see the details.</p>
+      <p><span class="d-only">Free pickup and delivery across these Miami neighborhoods. Hover a pin — or its card — to see the details.</span><span class="m-only">Free pickup and delivery across these Miami neighborhoods. Tap a pin to see the details.</span></p>
     </div>
 
     <div class="map-layout reveal">
@@ -1613,7 +1865,7 @@
       </div>
     </div>
 
-    <p class="areas-foot reveal">Not on the list? <a href="#book">Reach out anyway</a> — we're expanding across Miami-Dade.</p>
+    <p class="areas-foot reveal"><span class="d-only">Not on the list?</span><span class="m-only">Not on the map?</span> <a href="#book">Reach out anyway</a> — we're expanding across Miami-Dade.</p>
   </div>
 </section>
 
@@ -1791,9 +2043,9 @@
             <label class="wz-opt"><input type="radio" name="Issue" value="Charging issue">
               <span class="wz-card"><span>Charging issue<small>from $99</small></span></span></label>
             <label class="wz-opt"><input type="radio" name="Issue" value="Overheating / loud fan">
-              <span class="wz-card"><span>Overheating / loud fan<small>from $99</small></span></span></label>
+              <span class="wz-card"><span>Overheating / loud fan<small>from $79</small></span></span></label>
             <label class="wz-opt"><input type="radio" name="Issue" value="Stick drift">
-              <span class="wz-card"><span>Stick drift<small>from $49</small></span></span></label>
+              <span class="wz-card"><span>Stick drift<small>from $59, both sticks</small></span></span></label>
             <label class="wz-opt"><input type="radio" name="Issue" value="Won't power on">
               <span class="wz-card"><span>Won't power on<small>free diagnostic</small></span></span></label>
             <label class="wz-opt"><input type="radio" name="Issue" value="Something else">
@@ -1982,6 +2234,29 @@
     </div>
   </div>
 </footer>
+
+<!-- ===================== DETAIL SHEET (phone layout only) ===================== -->
+<div class="msheet" id="mSheet" hidden>
+  <div class="msheet-scrim" data-close></div>
+  <div class="msheet-panel" role="dialog" aria-modal="true" aria-labelledby="mSheetTitle" tabindex="-1">
+    <div class="msheet-grab" aria-hidden="true"></div>
+    <button type="button" class="msheet-x" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="msheet-head">
+      <div class="msheet-icon" id="mSheetIcon"></div>
+      <div>
+        <h3 id="mSheetTitle"></h3>
+        <div class="msheet-price" id="mSheetPrice"></div>
+      </div>
+    </div>
+    <p class="msheet-body" id="mSheetBody"></p>
+    <div class="msheet-tags" id="mSheetTags"></div>
+    <a href="#book" class="btn-primary msheet-cta" id="mSheetCta"><span class="btn-label">Book a pickup</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -2765,6 +3040,249 @@
       submitBtn.innerHTML = submitBtnDefaultHTML;
     }
   });
+
+  // ============================================================
+  // MOBILE RETOOL (prototype) — phones only (640px and under).
+  // Pairs with the "MOBILE RETOOL" block at the end of the stylesheet.
+  // Each piece reads its content from the markup that already exists, so
+  // there is one copy of every price and description and desktop is
+  // unaffected. Every handler checks the media query before acting.
+  // ============================================================
+  (function () {
+    if (!window.matchMedia) return;
+    var mq = window.matchMedia('(max-width: 640px)');
+    function on() { return mq.matches; }
+    function each(sel, fn, root) { Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); }
+    function onActivate(el, fn) {
+      el.addEventListener('click', function (e) { if (on()) fn(e); });
+      el.addEventListener('keydown', function (e) {
+        if (!on() || (e.key !== 'Enter' && e.key !== ' ')) return;
+        e.preventDefault(); fn(e);
+      });
+    }
+
+    // ---------- detail sheet ----------
+    var sheet = document.getElementById('mSheet');
+    var panel = sheet && sheet.querySelector('.msheet-panel');
+    var sTitle = document.getElementById('mSheetTitle');
+    var sPrice = document.getElementById('mSheetPrice');
+    var sIcon = document.getElementById('mSheetIcon');
+    var sBody = document.getElementById('mSheetBody');
+    var sTags = document.getElementById('mSheetTags');
+    var sCta = document.getElementById('mSheetCta');
+    var opener = null, pendingIssue = '', closeTimer = null;
+
+    function openSheet(o) {
+      if (!sheet) return;
+      clearTimeout(closeTimer);
+      opener = o.opener || document.activeElement;
+      pendingIssue = o.issue || '';
+      sheet.style.setProperty('--sheet-c', o.color || '');
+      sTitle.textContent = o.title;
+      sPrice.textContent = o.price || '';
+      sBody.textContent = o.body;
+      sIcon.textContent = '';
+      if (o.icon) sIcon.appendChild(o.icon.cloneNode(true));
+      sTags.textContent = '';
+      if (o.tags) {
+        var lab = document.createElement('div');
+        lab.className = 'msheet-tags-label'; lab.textContent = 'Works on';
+        sTags.appendChild(lab); sTags.appendChild(o.tags.cloneNode(true));
+      }
+      sCta.querySelector('.btn-label').textContent = o.cta || 'Book a pickup';
+      sheet.hidden = false;
+      panel.style.transform = '';
+      panel.scrollTop = 0;
+      document.documentElement.style.overflow = 'hidden';
+      // next frame, so the slide-up transition has a starting point
+      requestAnimationFrame(function () { requestAnimationFrame(function () { sheet.classList.add('is-open'); }); });
+      panel.focus({ preventScroll: true });
+    }
+
+    function closeSheet(refocus) {
+      if (!sheet || sheet.hidden) return;
+      sheet.classList.remove('is-open', 'is-dragging');
+      panel.style.transform = '';
+      document.documentElement.style.overflow = '';
+      closeTimer = setTimeout(function () { sheet.hidden = true; }, 380);
+      if (refocus !== false && opener && opener.focus) opener.focus({ preventScroll: true });
+      opener = null;
+    }
+
+    if (sheet) {
+      sheet.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closeSheet(); });
+      document.addEventListener('keydown', function (e) {
+        if (sheet.hidden) return;
+        if (e.key === 'Escape') { closeSheet(); return; }
+        if (e.key !== 'Tab') return;
+        // keep keyboard focus inside the sheet while it is open
+        var f = panel.querySelectorAll('button, a[href]');
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && (document.activeElement === first || document.activeElement === panel)) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+      // "Book this repair": remember the issue so the booking form already has it
+      sCta.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (pendingIssue) {
+          var radio = document.querySelector('#bookForm input[name="Issue"][value="' + pendingIssue + '"]');
+          if (radio) radio.checked = true;
+        }
+        closeSheet(false);
+        var book = document.getElementById('book');
+        if (book) book.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      // swipe down to dismiss
+      var y0 = null, dy = 0;
+      panel.addEventListener('touchstart', function (e) {
+        y0 = panel.scrollTop <= 0 ? e.touches[0].clientY : null; dy = 0;
+      }, { passive: true });
+      panel.addEventListener('touchmove', function (e) {
+        if (y0 === null) return;
+        dy = e.touches[0].clientY - y0;
+        if (dy <= 0) { dy = 0; return; }
+        sheet.classList.add('is-dragging');
+        panel.style.transform = 'translateY(' + dy + 'px)';
+      }, { passive: true });
+      panel.addEventListener('touchend', function () {
+        if (y0 === null) return;
+        sheet.classList.remove('is-dragging');
+        if (dy > 90) closeSheet(); else panel.style.transform = '';
+        y0 = null; dy = 0;
+      });
+      // leaving phone width with the sheet open: just put it away
+      var onMq = function () { if (!on()) closeSheet(false); applyRoles(); };
+      if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
+    }
+
+    // ---------- services: tile -> sheet ----------
+    each('.services .svc', function (tile) {
+      onActivate(tile, function () {
+        var price = tile.querySelector('.svc-price');
+        var amount = price ? price.firstChild.textContent.trim() : '';
+        var unit = price && price.querySelector('small') ? price.querySelector('small').textContent.trim() : '';
+        openSheet({
+          opener: tile,
+          color: getComputedStyle(tile).getPropertyValue('--svc-color').trim(),
+          icon: tile.querySelector('.svc-icon'),
+          title: tile.querySelector('h3').textContent,
+          price: unit === 'starting' ? 'From ' + amount : (amount + ' ' + unit).trim(),
+          body: tile.querySelector('p').textContent,
+          tags: tile.querySelector('.svc-tags'),
+          cta: 'Book this repair',
+          issue: tile.getAttribute('data-issue') || ''
+        });
+      });
+    });
+
+    // ---------- guarantees: chip -> sheet ----------
+    each('.svc-notes .svc-note', function (note) {
+      onActivate(note, function () {
+        var badge = note.querySelector('.badge');
+        var text = note.querySelector('span:not(.badge)');
+        var t = badge.textContent.trim().toLowerCase();
+        openSheet({
+          opener: note,
+          color: getComputedStyle(document.documentElement).getPropertyValue('--ps-teal').trim(),
+          title: t.charAt(0).toUpperCase() + t.slice(1),
+          body: text ? text.textContent : '',
+          cta: 'Book a pickup'
+        });
+      });
+    });
+
+    // ---------- how it works: glyph -> one sentence ----------
+    var stepsWrap = document.querySelector('.steps');
+    var steps = stepsWrap ? Array.prototype.slice.call(stepsWrap.querySelectorAll('.step')) : [];
+    var detail = null;
+    function pickStep(i, focus) {
+      steps.forEach(function (s, j) {
+        s.classList.toggle('is-current', j === i);
+        if (on()) { s.setAttribute('aria-selected', j === i ? 'true' : 'false'); s.tabIndex = j === i ? 0 : -1; }
+      });
+      detail.setAttribute('data-i', i + 1);
+      detail.style.setProperty('--i', i);
+      detail.firstChild.textContent = steps[i].querySelector('p').textContent;
+      if (focus) steps[i].focus();
+    }
+    if (steps.length) {
+      detail = document.createElement('div');
+      detail.className = 'step-detail'; detail.id = 'stepDetail';
+      detail.appendChild(document.createElement('p'));
+      stepsWrap.appendChild(detail);
+      steps.forEach(function (s, i) {
+        s.addEventListener('click', function () { if (on()) pickStep(i); });
+        s.addEventListener('keydown', function (e) {
+          if (!on()) return;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            pickStep((i + (e.key === 'ArrowRight' ? 1 : steps.length - 1)) % steps.length, true);
+          } else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickStep(i); }
+        });
+      });
+      pickStep(0);
+    }
+
+    // ---------- service areas: caption follows the selected neighborhood ----------
+    var mapPanel = document.querySelector('#areas .map-panel');
+    if (mapPanel) {
+      var cap = document.createElement('p');
+      cap.className = 'area-caption'; cap.setAttribute('aria-live', 'polite');
+      mapPanel.insertBefore(cap, mapPanel.firstChild);
+      var paintCaption = function () {
+        var a = mapPanel.querySelector('.leg.is-active');
+        if (!a) return;
+        var name = a.querySelector('.leg-name').textContent;
+        if (cap.getAttribute('data-for') === name) return;
+        cap.setAttribute('data-for', name);
+        cap.style.setProperty('--c', a.style.getPropertyValue('--c'));
+        cap.textContent = '';
+        var dot = document.createElement('i'), txt = document.createElement('span'), b = document.createElement('b');
+        b.textContent = name + '. ';
+        txt.appendChild(b);
+        txt.appendChild(document.createTextNode(a.querySelector('.leg-blurb').textContent));
+        cap.appendChild(dot); cap.appendChild(txt);
+      };
+      paintCaption();
+      if (window.MutationObserver) {
+        new MutationObserver(paintCaption).observe(mapPanel.querySelector('.map-legend'), { subtree: true, attributes: true, attributeFilter: ['class'] });
+      }
+    }
+
+    // ---------- about: first paragraph, rest on request ----------
+    var copy = document.querySelector('.about-copy');
+    if (copy && copy.querySelectorAll('p').length > 1) {
+      var more = document.createElement('button');
+      more.type = 'button'; more.className = 'about-toggle';
+      more.setAttribute('aria-expanded', 'false');
+      more.textContent = 'Read the full story';
+      copy.appendChild(more);
+      more.addEventListener('click', function () {
+        var open = copy.classList.toggle('is-open');
+        more.setAttribute('aria-expanded', open ? 'true' : 'false');
+        more.textContent = open ? 'Show less' : 'Read the full story';
+      });
+    }
+
+    // ---------- roles only apply while the phone layout is showing ----------
+    function applyRoles() {
+      var m = on();
+      each('.services .svc, .svc-notes .svc-note', function (el) {
+        if (m) { el.setAttribute('role', 'button'); el.tabIndex = 0; el.setAttribute('aria-haspopup', 'dialog'); }
+        else { el.removeAttribute('role'); el.removeAttribute('tabindex'); el.removeAttribute('aria-haspopup'); }
+      });
+      if (stepsWrap) {
+        if (m) stepsWrap.setAttribute('role', 'tablist'); else stepsWrap.removeAttribute('role');
+        steps.forEach(function (s) {
+          if (m) { s.setAttribute('role', 'tab'); s.setAttribute('aria-controls', 'stepDetail'); s.setAttribute('aria-selected', s.classList.contains('is-current') ? 'true' : 'false'); s.tabIndex = s.classList.contains('is-current') ? 0 : -1; }
+          else { s.removeAttribute('role'); s.removeAttribute('aria-controls'); s.removeAttribute('aria-selected'); s.removeAttribute('tabindex'); }
+        });
+        if (detail) { if (m) detail.setAttribute('role', 'tabpanel'); else detail.removeAttribute('role'); }
+      }
+    }
+    applyRoles();
+    if (!sheet) { if (mq.addEventListener) mq.addEventListener('change', applyRoles); else if (mq.addListener) mq.addListener(applyRoles); }
+  })();
 </script>
 </body>
 </html>
