@@ -2801,8 +2801,6 @@
         show('Next-day, not same-day: a 3pm–8pm pickup is after our 3pm cutoff, so it comes back ' + nextOpenDay(picked) + '. Pick 11am–3pm to get it back the same day.');
       } else if (isSame && (!date.value || date.value === today) && now.getHours() >= CUTOFF) {
         show('Next-day, not same-day: it\'s past our 3pm cutoff, so a request made now comes back ' + nextOpenDay(now) + '.');
-      } else if (isSame) {
-        show('Pick 11am–3pm and we\'ll return it the same day. A 3pm–8pm pickup comes back the next day instead.');
       } else {
         show('');
       }
