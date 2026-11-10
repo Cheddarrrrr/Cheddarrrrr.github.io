@@ -1,8 +1,9 @@
 # RepairStation
 
-> Mobile video game console and gaming handheld repair service in Miami, Florida.
-> We pick up your console from your door, repair it, and deliver it back — typically
-> within 3 days. No store visit required.
+> Mobile PlayStation 5 and Xbox Series X repair service in Miami, Florida.
+> We pick up your console or controller from your door, repair it, and deliver it
+> back — typically within 3 days, or the same day with optional same-day service.
+> No store visit required.
 
 ## Business facts
 
@@ -12,43 +13,50 @@
 - **Website:** https://repairstationmiami.com/
 - **Phone:** (305) 699-2750
 - **Email:** contact@repairstationmiami.com
-- **Hours:** Every day, 11:00am–11:00pm ET.
+- **Hours (ET):** Tuesday, Thursday, Friday, Saturday and Sunday 11:00am–8:00pm;
+  Monday 11:00am–3:00pm; closed Wednesday.
 - **Service model:** Mobile / pickup and delivery. There is no walk-in storefront.
 - **Payment accepted:** Cash, Zelle, Cash App, Venmo, Apple Pay, Google Pay, credit and
   debit cards. Card and digital wallet payments are processed through Stripe.
 
 ## Service area
 
-Miami Beach, Coral Gables, Coconut Grove, Brickell, Key Biscayne, and Pinecrest.
+Downtown Miami (including Brickell and Coconut Grove), Wynwood (including Midtown),
+Miami Beach, Coral Gables, Doral, and Key Biscayne.
 Also serves the wider Miami-Dade County area on request.
 
-## Consoles and handhelds repaired
+## Consoles and controllers repaired
 
-Current-generation systems only:
-PlayStation 5, Xbox Series X, Xbox Series S, Nintendo Switch 2,
-Nintendo Switch OLED, Steam Deck, ASUS ROG Ally.
+- PlayStation 5
+- Xbox Series X
+- DualSense (PS5) and Xbox Wireless controllers
 
-Gaming handhelds (Steam Deck and ASUS ROG Ally) are a core service, not an
-afterthought — this is board-level work that many general repair shops decline.
+RepairStation does not repair Xbox Series S, Nintendo Switch, Steam Deck,
+ASUS ROG Ally, or other devices.
 
-## Services and starting prices (USD)
+## Services and starting prices (USD, before sales tax)
 
+Prices do not include sales tax; applicable Florida sales tax is added to the total.
 Pickup and delivery are included in every price listed. There is no travel fee,
 trip charge, or delivery surcharge.
 
-- HDMI port repair — from $149
-- Disc drive repair — from $129
-- Charging port repair (USB-C on Switch, Steam Deck, ROG Ally, controllers) — from $99
-- Overheating, fan service and deep cleaning (includes thermal compound replacement) — from $99
-- Controller stick drift repair — from $49
-- Diagnostics for consoles that won't power on — free
+- HDMI port repair — from $120
+- Overheating, fan service and deep cleaning (includes thermal compound replacement) — from $80
+- Controller stick drift repair (both sticks replaced with Hall effect joysticks as standard) — from $60
+- Same-day service (optional add-on to any repair) — +$25
 - Pickup and delivery — free
 
-Board-level and liquid damage work is quoted after a free diagnostic.
+## Same-day service
+
+- Optional, $25 on top of the repair price.
+- Requests made by 3:00pm are returned the same day.
+- Same-day requests made after 3:00pm are returned the next day RepairStation is open.
+- Not available on Mondays or Wednesdays.
+- Standard turnaround without it is typically within 3 days of pickup.
 
 ## Guarantees
 
-- Free diagnostics on every console and handheld.
+- Free diagnostics.
 - No fix, no fee: if the repair isn't possible or doesn't hold, there is no charge.
 - Written estimate provided before any work begins.
 - 30-day warranty on every completed repair.
@@ -59,9 +67,10 @@ Board-level and liquid damage work is quoted after a free diagnostic.
 
 1. Customer books a pickup through the website form at https://repairstationmiami.com/#book
 2. RepairStation texts to confirm a pickup window.
-3. The console is collected from the customer's door and a written estimate is given.
+3. The console or controller is collected from the customer's door and a written estimate is given.
 4. The repair is completed on the bench.
-5. The console is delivered back, typically within 3 days of pickup.
+5. The device is delivered back, typically within 3 days of pickup, or the same day
+   with same-day service.
 
 ## Payment timing
 
