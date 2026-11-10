@@ -2749,10 +2749,13 @@
     var iso = function (d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
     var defaultSubject = subject ? subject.value : '';
 
+    // the next open day after `from`, worded from today's point of view
     function nextOpenDay(from) {
       for (var i = 1; i <= 7; i++) {
         var d = new Date(from); d.setDate(d.getDate() + i);
-        if (CLOSED.indexOf(d.getDay()) === -1) return i === 1 ? 'tomorrow' : DAYS[d.getDay()];
+        if (CLOSED.indexOf(d.getDay()) !== -1) continue;
+        var t = new Date(); t.setDate(t.getDate() + 1);
+        return iso(d) === iso(t) ? 'tomorrow' : DAYS[d.getDay()];
       }
       return 'the next day we\'re open';
     }
@@ -2780,10 +2783,10 @@
         date.min = iso(new Date(now.getTime() + 864e5));
       }
 
-      // The 3pm–8pm window is off on Mondays (we close at 3pm) and for same-day
-      // service, whose pickups have to happen before the 3pm cutoff
+      // The 3pm–8pm window is off on Mondays (we close at 3pm). With same-day
+      // service it's allowed, but it's after the 3pm cutoff, so it comes back next-day.
       if (evening) {
-        evening.disabled = day === SHORT_DAY || isSame;
+        evening.disabled = day === SHORT_DAY;
         if (evening.disabled && evening.checked) {
           var first = document.querySelector('#bookForm input[name="Preferred window"]');
           if (first) first.checked = true;
@@ -2794,16 +2797,21 @@
         show('We\'re closed on Wednesdays. Please pick another day.');
       } else if (!sameAllowed) {
         show('Same-day service isn\'t available on Mondays or Wednesdays.');
+      } else if (isSame && evening && evening.checked) {
+        show('Next-day, not same-day: a 3pm–8pm pickup is after our 3pm cutoff, so it comes back ' + nextOpenDay(picked) + '. Pick 11am–3pm to get it back the same day.');
       } else if (isSame && (!date.value || date.value === today) && now.getHours() >= CUTOFF) {
-        show('It\'s past 3pm, so a same-day request made now comes back ' + nextOpenDay(now) + '.');
+        show('Next-day, not same-day: it\'s past our 3pm cutoff, so a request made now comes back ' + nextOpenDay(now) + '.');
       } else if (isSame) {
-        show('Same-day pickups are between 11am and 3pm, and we\'ll return it the same day.');
+        show('Pick 11am–3pm and we\'ll return it the same day. A 3pm–8pm pickup comes back the next day instead.');
       } else {
         show('');
       }
-      if (subject) subject.value = isSame ? 'SAME-DAY pickup request — RepairStation' : defaultSubject;
+      // what we actually promise goes into the booking itself
+      var nextDay = isSame && ((evening && evening.checked) || ((!date.value || date.value === today) && now.getHours() >= CUTOFF));
+      same.value = nextDay ? 'Next-day (+$25, booked after the 3pm cutoff)' : 'Same-day (+$25)';
+      if (subject) subject.value = !isSame ? defaultSubject : (nextDay ? 'NEXT-DAY pickup request — RepairStation' : 'SAME-DAY pickup request — RepairStation');
     }
-    document.querySelectorAll('#bookForm input[name="Turnaround"]').forEach(function (r) { r.addEventListener('change', sync); });
+    document.querySelectorAll('#bookForm input[name="Turnaround"], #bookForm input[name="Preferred window"]').forEach(function (r) { r.addEventListener('change', sync); });
     date.addEventListener('change', sync);
     date.addEventListener('input', sync);
     sync();
