@@ -1398,6 +1398,7 @@
   @media (min-width: 901px) {
     .book-shell { max-width: 880px; margin-left: auto; margin-right: auto; }
     .wz-step[data-step="1"] .wz-opts { grid-template-columns: repeat(4, 1fr); }
+    .wz-opts[aria-label="Preferred window"], .wz-opts[aria-label="Turnaround"] { grid-template-columns: repeat(2, 1fr); }
     .wz-opts > .wz-opt:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
     .wz-step[data-step="1"] .wz-opts > .wz-opt:last-child { grid-column: auto; }
   }
@@ -2170,12 +2171,10 @@
           <div class="field">
             <label>Preferred window</label>
             <div class="wz-opts" role="radiogroup" aria-label="Preferred window">
-              <label class="wz-opt"><input type="radio" name="Preferred window" value="Late morning (11am–1pm)" checked>
-                <span class="wz-card">Late morning<small>11am – 1pm</small></span></label>
-              <label class="wz-opt"><input type="radio" name="Preferred window" value="Afternoon (1pm–5pm)">
-                <span class="wz-card">Afternoon<small>1pm – 5pm</small></span></label>
-              <label class="wz-opt"><input type="radio" name="Preferred window" value="Evening (5pm–8pm)" id="winEvening">
-                <span class="wz-card">Evening<small>5pm – 8pm</small></span></label>
+              <label class="wz-opt"><input type="radio" name="Preferred window" value="Morning/Afternoon (11am–3pm)" checked>
+                <span class="wz-card"><span>Morning/<wbr>Afternoon<small>11am – 3pm</small></span></span></label>
+              <label class="wz-opt"><input type="radio" name="Preferred window" value="Afternoon/Evening (3pm–8pm)" id="winEvening">
+                <span class="wz-card"><span>Afternoon/<wbr>Evening<small>3pm – 8pm</small></span></span></label>
             </div>
           </div>
         </div>
@@ -2771,15 +2770,6 @@
 
       date.setCustomValidity(CLOSED.indexOf(day) !== -1 && date.value ? 'We\'re closed on Wednesdays. Please pick another day.' : '');
 
-      // Mondays close at 3pm, so there's no evening window
-      if (evening) {
-        evening.disabled = day === SHORT_DAY;
-        if (evening.disabled && evening.checked) {
-          var first = document.querySelector('#bookForm input[name="Preferred window"]');
-          if (first) first.checked = true;
-        }
-      }
-
       var sameAllowed = NO_SAME_DAY.indexOf(day) === -1;
       same.disabled = !sameAllowed;
       if (!sameAllowed && same.checked) {
@@ -2790,6 +2780,16 @@
         date.min = iso(new Date(now.getTime() + 864e5));
       }
 
+      // The 3pm–8pm window is off on Mondays (we close at 3pm) and for same-day
+      // service, whose pickups have to happen before the 3pm cutoff
+      if (evening) {
+        evening.disabled = day === SHORT_DAY || isSame;
+        if (evening.disabled && evening.checked) {
+          var first = document.querySelector('#bookForm input[name="Preferred window"]');
+          if (first) first.checked = true;
+        }
+      }
+
       if (CLOSED.indexOf(day) !== -1 && date.value) {
         show('We\'re closed on Wednesdays. Please pick another day.');
       } else if (!sameAllowed) {
@@ -2797,7 +2797,7 @@
       } else if (isSame && (!date.value || date.value === today) && now.getHours() >= CUTOFF) {
         show('It\'s past 3pm, so a same-day request made now comes back ' + nextOpenDay(now) + '.');
       } else if (isSame) {
-        show('Book by 3pm on your pickup day and we\'ll return it the same day.');
+        show('Same-day pickups are between 11am and 3pm, and we\'ll return it the same day.');
       } else {
         show('');
       }
