@@ -642,7 +642,10 @@
      mobile browser chrome (address bar) that vh doesn't. */
   .hero {
     min-height: calc(100vh - var(--nav-h));
-    min-height: calc(100dvh - var(--nav-h));
+    /* svh = the screen with the browser toolbar showing. It stays fixed while the
+       iPhone toolbar grows/shrinks on scroll; dvh changed with it and made the
+       whole page jump. */
+    min-height: calc(100svh - var(--nav-h));
     display: flex; align-items: center;
     padding: clamp(40px, 8vw, 80px) 0; position: relative; overflow: hidden;
   }
