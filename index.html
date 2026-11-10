@@ -3078,11 +3078,14 @@
     });
 
     var advanceTimer = null;
+    // phones: visitors always press Continue themselves, so a mis-tap never skips ahead
+    var phoneMq = window.matchMedia ? window.matchMedia('(max-width: 640px)') : null;
     // Picking an option is itself the answer — advance so the visitor never has
     // to hunt for Continue. Only on the pure-choice steps (1-3), and not when
-    // the choice reveals a follow-up field like the address box.
+    // the choice reveals a follow-up field like the address box. Desktop only.
     form.addEventListener('change', function (e) {
       if (e.target.type !== 'radio') return;
+      if (phoneMq && phoneMq.matches) return;
       var step = e.target.closest('.wz-step');
       if (!step || steps.indexOf(step) !== at || at >= 3) return;
       if (e.target.value === 'Other (Miami-Dade)') return;
