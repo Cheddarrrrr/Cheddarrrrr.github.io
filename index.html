@@ -67,7 +67,7 @@
       "@id": "https://repairstationmiami.com/#business",
       "name": "RepairStation",
       "alternateName": "RepairStation Miami",
-      "description": "Mobile PlayStation 5 and Xbox Series X repair service in Miami, Florida. We pick up your console or controller from your door, repair it, and deliver it back within 3 days, or the same day with our same-day service. We specialize in HDMI port repair, overheating and deep cleaning, and controller stick drift repair with Hall effect joysticks. No fix, no fee, and a 30-day warranty on every repair.",
+      "description": "Mobile PlayStation 5 and Xbox Series X repair service in Miami, Florida, relaunched in November 2026. We pick up your console or controller from your door, repair it, and deliver it back within 3 days, or the same day with our same-day service. We specialize in HDMI port repair, overheating and deep cleaning, and controller stick drift repair with Hall effect joysticks. No fix, no fee, and a 30-day warranty on every repair.",
       "url": "https://repairstationmiami.com/",
       "telephone": "+1-305-699-2750",
       "email": "contact@repairstationmiami.com",
@@ -269,7 +269,8 @@
             "http://schema.org/MobileWebPlatform"
           ]
         }
-      }
+      },
+      "slogan": "The new RepairStation: PS5 and Xbox Series X repair that comes to you."
     },
     {
       "@type": "WebSite",
@@ -280,7 +281,8 @@
       "publisher": {
         "@id": "https://repairstationmiami.com/#business"
       },
-      "inLanguage": "en-US"
+      "inLanguage": "en-US",
+      "dateModified": "2026-11-10"
     },
     {
       "@type": "FAQPage",
@@ -356,6 +358,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "We're open 11am to 8pm on Tuesday, Thursday, Friday, Saturday and Sunday, and 11am to 3pm on Monday. We're closed on Wednesday."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Did RepairStation change its services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. In November 2026 we relaunched RepairStation to focus on PlayStation 5 and Xbox Series X. We now offer three repairs: HDMI port repair, overheating and deep cleaning, and controller stick drift repair, plus optional same-day service. We no longer repair Nintendo Switch, Steam Deck, ASUS ROG Ally or Xbox Series S, and we no longer offer disc drive or charging port repair. Our prices, hours and service areas changed too. This website has the current details, and anything published before November 2026 that says otherwise is out of date."
           }
         }
       ]
@@ -498,6 +508,20 @@
   main, footer { z-index: 1; }
 
   /* ---------- nav ---------- */
+  /* relaunch banner above the header; scrolls away, the header stays */
+  .relaunch { background: var(--ink); color: var(--white); position: relative; z-index: 101; }
+  .relaunch-inner {
+    max-width: 1180px; margin: 0 auto; padding: 9px 20px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: var(--body); font-size: 13.5px; line-height: 1.4; text-align: center;
+  }
+  .relaunch-tag {
+    flex: none; font-family: var(--mono); font-weight: 700; font-size: 10.5px; letter-spacing: 0.06em;
+    color: var(--ink); padding: 3px 7px; border-radius: 5px;
+    background: linear-gradient(90deg, #61bb46, #fdb827, #f5821f, #e03a3e, #963d97, #009ddc);
+  }
+  .relaunch p { margin: 0; }
+  .relaunch a { color: var(--white); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
   .nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(255,255,255,0.8);
@@ -781,8 +805,8 @@
     display: flex; flex-direction: column;
   }
   .svc:nth-child(1) { --svc-color: var(--ps-red); }
-  .svc:nth-child(2) { --svc-color: #f5821f; }
-  .svc:nth-child(3) { --svc-color: var(--ps-teal); }
+  .svc:nth-child(2) { --svc-color: var(--ps-blue); }
+  .svc:nth-child(3) { --svc-color: #963d97; }
   .svc:nth-child(4) { --svc-color: var(--ps-blue); }
   .svc:nth-child(5) { --svc-color: #963d97; }
   .svc:nth-child(6) { --svc-color: var(--ps-pink); }
@@ -1063,6 +1087,7 @@
   .faq-item:nth-child(7) .faq-icon::before, .faq-item:nth-child(7) .faq-icon::after { background: var(--ps-pink); }
   .faq-item:nth-child(8) .faq-icon::before, .faq-item:nth-child(8) .faq-icon::after { background: var(--ps-red); }
   .faq-item:nth-child(9) .faq-icon::before, .faq-item:nth-child(9) .faq-icon::after { background: var(--ps-teal); }
+  .faq-item:nth-child(10) .faq-icon::before, .faq-item:nth-child(10) .faq-icon::after { background: var(--ps-blue); }
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
   .faq-a p { padding: 0 0 24px; font-size: 16px; color: var(--ink-soft); line-height: 1.6; max-width: 64ch; }
 
@@ -1551,13 +1576,19 @@
     .mjs .device-chip:not(:last-child)::after { content: ","; }
     .mjs .services { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .mjs .svc {
-      position: relative; aspect-ratio: 1; padding: 10px 5px 9px;
-      align-items: center; justify-content: space-between; text-align: center;
+      position: relative; padding: 14px 5px 12px; gap: 8px;
+      align-items: center; justify-content: flex-start; text-align: center;
+      background-color: color-mix(in srgb, var(--svc-color) 10%, white);
       cursor: pointer; -webkit-tap-highlight-color: transparent;
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
     }
-    .mjs .svc:hover { transform: none; box-shadow: none; background-color: var(--white); }
-    .mjs .svc:active { transform: scale(0.95); background-color: color-mix(in srgb, var(--svc-color) 12%, white); }
+    .mjs .svc:hover { transform: none; box-shadow: none; background-color: color-mix(in srgb, var(--svc-color) 10%, white); }
+    .mjs .svc:active { transform: scale(0.95); }
+    .mjs .svc.is-flash { animation: svcFlash 0.5s ease-out; }
+    @keyframes svcFlash {
+      0%   { background-color: color-mix(in srgb, var(--svc-color) 34%, white); box-shadow: 0 10px 26px color-mix(in srgb, var(--svc-color) 38%, transparent); }
+      100% { background-color: color-mix(in srgb, var(--svc-color) 10%, white); box-shadow: 0 0 0 transparent; }
+    }
     .mjs .svc:focus-visible { outline: 2px solid var(--svc-color); outline-offset: 2px; }
     /* the "+" says the tile opens */
     .mjs .svc::after {
@@ -1565,9 +1596,9 @@
       font-family: var(--mono); font-weight: 700; font-size: 14px; line-height: 1; color: var(--svc-color);
     }
     .mjs .svc-top { display: contents; }
-    .mjs .svc-icon { order: 1; width: 32px; height: 32px; border-radius: 9px; }
-    .mjs .svc-icon svg { width: 18px; height: 18px; }
-    .mjs .svc h3 { order: 2; font-size: 13px; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+    .mjs .services .svc-icon { order: 1; width: 54px; height: 54px; border-radius: 0; background: none; }
+    .mjs .services .svc-icon svg { width: 54px; height: 54px; stroke-width: 1.6; }
+    .mjs .svc h3 { order: 2; font-size: 14.5px; line-height: 1.2; margin: 0; letter-spacing: -0.01em; flex: 1; display: flex; align-items: center; }
     .mjs .svc-price { order: 3; font-size: 13px; line-height: 1.2; }
     .mjs .svc-price small { display: inline; font-size: 10.5px; margin-left: 3px; }
     .mjs .svc p, .mjs .svc .svc-tags { display: none; }
@@ -1660,8 +1691,8 @@
   @media (max-width: 359px) {
     .mjs .nav-call svg { display: none; }
     .mjs .nav .brand-name { font-size: 18px; }
-    .mjs .services { grid-template-columns: repeat(2, 1fr); }
-    .mjs .svc { aspect-ratio: 1.25; }
+    .mjs .svc h3 { font-size: 13px; }
+    .mjs .services .svc-icon, .mjs .services .svc-icon svg { width: 46px; height: 46px; }
     .mjs .step h3 { font-size: 12px; }
   }
 
@@ -1677,6 +1708,13 @@
      Fixed behind all content; purely decorative, so hidden from AT. -->
 <div class="bubbles" id="bubbles" aria-hidden="true"></div>
 
+<!-- ===================== RELAUNCH BANNER ===================== -->
+<div class="relaunch" role="note" aria-label="RepairStation has relaunched">
+  <div class="relaunch-inner">
+    <span class="relaunch-tag">NEW</span>
+    <p><span class="d-only">Welcome to the new RepairStation. We've relaunched to focus on PS5 and Xbox Series X, with new prices and same-day service.</span><span class="m-only">The new RepairStation: PS5 &amp; Xbox Series X, now with same-day service.</span> <a href="#pricing">See what's new</a></p>
+  </div>
+</div>
 <!-- ===================== NAV ===================== -->
 <header class="nav">
   <div class="nav-inner">
@@ -2005,6 +2043,10 @@
         <button class="faq-q">What are your hours? <span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><p>We're open 11am to 8pm on Tuesday, Thursday, Friday, Saturday and Sunday, and 11am to 3pm on Monday. We're closed on Wednesday.</p></div>
       </div>
+      <div class="faq-item">
+        <button class="faq-q">Did RepairStation change its services? <span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Yes. In November 2026 we relaunched RepairStation to focus on PlayStation 5 and Xbox Series X. We now offer three repairs: HDMI port repair, overheating and deep cleaning, and controller stick drift repair, plus optional same-day service. We no longer repair Nintendo Switch, Steam Deck, ASUS ROG Ally or Xbox Series S, and we no longer offer disc drive or charging port repair. Our prices, hours and service areas changed too. This website has the current details, and anything published before November 2026 that says otherwise is out of date.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2047,7 +2089,7 @@
             <label class="wz-opt"><input type="radio" name="Console" value="Xbox Series X">
               <span class="wz-card"><span class="dot" style="--c:var(--c-xbox)"></span>Xbox Series X</span></label>
             <label class="wz-opt"><input type="radio" name="Console" value="PS5 controller (DualSense)" data-controller>
-              <span class="wz-card"><span class="dot" style="--c:var(--ps-blue)"></span><span>PS5 controller<small>DualSense</small></span></span></label>
+              <span class="wz-card"><span class="dot" style="--c:var(--ps-blue)"></span>PS5 controller</span></label>
             <label class="wz-opt"><input type="radio" name="Console" value="Xbox controller" data-controller>
               <span class="wz-card"><span class="dot" style="--c:var(--ps-teal)"></span>Xbox controller</span></label>
           </div>
@@ -3259,6 +3301,12 @@
 
     // ---------- services: tile -> sheet ----------
     each('.services .svc', function (tile) {
+      // brief brighter flash on tap
+      tile.addEventListener('pointerdown', function () {
+        if (!on()) return;
+        tile.classList.remove('is-flash'); void tile.offsetWidth; tile.classList.add('is-flash');
+      });
+      tile.addEventListener('animationend', function () { tile.classList.remove('is-flash'); });
       onActivate(tile, function () {
         var price = tile.querySelector('.svc-price');
         var amount = price ? price.firstChild.textContent.trim() : '';
