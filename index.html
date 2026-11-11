@@ -3118,17 +3118,22 @@
   var addressInput = document.getElementById('address');
   var submitBtnDefaultHTML = submitBtn.innerHTML;
 
-  // Auto-text backup: independent fire-and-forget ping to an Apps Script web app,
-  // which texts the customer a confirmation via Quo. Runs alongside Web3Forms, which
-  // still handles the email notification and the visible confirmation.
-  // sendBeacon (not fetch) because we navigate to confirmed.html right after submit,
-  // which would cancel a normal in-flight request.
+  // Auto-text backup: independent request to an Apps Script web app, which texts the
+  // customer a confirmation via Quo. Runs alongside Web3Forms, which still handles
+  // the email notification and the visible confirmation.
+  // Sent as a keepalive fetch, which outlives the move to confirmed.html, and the
+  // submit handler also gives it a moment to leave before navigating. sendBeacon is
+  // only the fallback: it reports success as soon as the request is queued, and some
+  // browsers and content blockers then drop it without telling us.
   // This must be the address of the ACTIVE deployment in Apps Script (Deploy → Manage
   // deployments). Editing that deployment with "New version" keeps this address;
   // creating a "New deployment" makes a new one, and this line must then be updated.
   var AUTOTEXT_URL = 'https://script.google.com/macros/s/AKfycbzkcsGTCap_4p4xHjLK-ABFeuGSRoHn5ZO6FJx5QkOSsRTxeiRRuV5Iz9sfjXFqRa2k/exec';
 
+  // Returns a promise that settles once the request has gone through (or has been
+  // given up on). It never rejects, so it can't break the real submit.
   function fireAutoText(form) {
+    var done = Promise.resolve();
     try {
       var params = new URLSearchParams();
       new FormData(form).forEach(function (value, key) {
@@ -3138,18 +3143,29 @@
       // params.append('token', 'PASTE_SHARED_TOKEN'); // only if you set SHARED_TOKEN
 
       var body = params.toString();
-      if (navigator.sendBeacon) {
-        var blob = new Blob([body], { type: 'application/x-www-form-urlencoded' });
-        if (navigator.sendBeacon(AUTOTEXT_URL, blob)) return;
+      var beacon = function () {
+        try {
+          if (!navigator.sendBeacon) return;
+          navigator.sendBeacon(AUTOTEXT_URL, new Blob([body], { type: 'application/x-www-form-urlencoded' }));
+        } catch (err) { /* nothing left to try */ }
+      };
+
+      if (window.fetch) {
+        // If the fetch fails (blocked, offline, or cut off by the page change in a
+        // browser without keepalive) fall back to a beacon. A double delivery is
+        // harmless: the script ignores a repeat from the same number.
+        done = fetch(AUTOTEXT_URL, {
+          method: 'POST', mode: 'no-cors', keepalive: true,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body
+        }).then(function () {}, beacon);
+      } else {
+        beacon();
       }
-      fetch(AUTOTEXT_URL, {
-        method: 'POST', mode: 'no-cors', keepalive: true,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body
-      });
     } catch (err) {
       /* never let the auto-text break the real submit */
     }
+    return done;
   }
 
   form.addEventListener('submit', async function (e) {
@@ -3182,7 +3198,7 @@
 
     // Fire before Web3Forms and before form.reset() below, so the customer still gets
     // their text even if Web3Forms is down.
-    fireAutoText(form);
+    var autoText = fireAutoText(form);
 
     try {
       var res = await fetch(form.action, {
@@ -3196,6 +3212,10 @@
       // Brief inline message first so there's no blank beat if the nav is slow.
       msg.className = 'form-msg ok';
       msg.textContent = "Got it — taking you to your confirmation…";
+      // Give the auto-text request a short head start before leaving the page. It
+      // was sent before the Web3Forms call and keepalive lets it finish afterwards,
+      // so this is only a margin: at most 0.7s, less if the script has answered.
+      await Promise.race([autoText, new Promise(function (r) { setTimeout(r, 700); })]);
       window.location.assign('confirmed.html');
       return;
     } catch (err) {
