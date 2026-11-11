@@ -3123,7 +3123,10 @@
   // still handles the email notification and the visible confirmation.
   // sendBeacon (not fetch) because we navigate to confirmed.html right after submit,
   // which would cancel a normal in-flight request.
-  var AUTOTEXT_URL = 'https://script.google.com/macros/s/AKfycbzmS4wx8SODNKQlJ_zBfQS7BJS6_ajRCXADinJm7rPR0n75Czu_NXKCSMjfC7niumIw/exec';
+  // This must be the address of the ACTIVE deployment in Apps Script (Deploy → Manage
+  // deployments). Editing that deployment with "New version" keeps this address;
+  // creating a "New deployment" makes a new one, and this line must then be updated.
+  var AUTOTEXT_URL = 'https://script.google.com/macros/s/AKfycbzkcsGTCap_4p4xHjLK-ABFeuGSRoHn5ZO6FJx5QkOSsRTxeiRRuV5Iz9sfjXFqRa2k/exec';
 
   function fireAutoText(form) {
     try {
